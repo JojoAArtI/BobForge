@@ -10,6 +10,7 @@ import {
   ParsingError,
 } from '../types';
 import { readData, writeData } from '../utils/fileUtils';
+import { watsonxService } from './watsonxService';
 
 const ENDPOINTS_FILE = 'endpoints.json';
 
@@ -35,10 +36,8 @@ const SENSITIVE_KEYWORDS = [
 class ParserService {
   /**
    * Parse API documentation and extract endpoints
-   * 
-   * TODO: Replace with watsonx.ai Granite integration
-   * This should use IBM watsonx.ai to intelligently parse API docs
-   * For now, using pattern matching and mock data
+   *
+   * Uses watsonx.ai Granite for intelligent parsing with fallback to regex
    */
   async parseDocumentation(
     projectId: string,
@@ -47,11 +46,26 @@ class ParserService {
     console.log(`[ParserService] Parsing documentation for project: ${projectId}`);
 
     try {
-      // TODO: Call watsonx.ai Granite API here
-      // const parsedEndpoints = await this.callWatsonxGranite(documentation);
+      let parsedEndpoints: ParsedEndpoint[];
 
-      // For now, use mock parser
-      const parsedEndpoints = this.mockParser(documentation);
+      // Check if watsonx.ai is configured and MOCK_MODE is disabled
+      const useMockMode = process.env.WATSONX_MOCK_MODE === 'true';
+      
+      if (!useMockMode && watsonxService.isConfigured()) {
+        console.log('[ParserService] Using watsonx.ai Granite for parsing');
+        try {
+          // Use watsonx.ai Granite for intelligent parsing
+          const graniteResult = await watsonxService.parseDocumentation(documentation);
+          parsedEndpoints = this.convertGraniteResponse(graniteResult);
+          console.log(`[ParserService] Granite parsed ${parsedEndpoints.length} endpoints`);
+        } catch (error) {
+          console.warn('[ParserService] Granite parsing failed, falling back to regex parser:', error);
+          parsedEndpoints = this.mockParser(documentation);
+        }
+      } else {
+        console.log('[ParserService] Using mock parser (MOCK_MODE enabled or watsonx.ai not configured)');
+        parsedEndpoints = this.mockParser(documentation);
+      }
 
       // Convert parsed endpoints to full endpoint objects
       const endpoints = parsedEndpoints.map((parsed) =>
@@ -240,6 +254,29 @@ class ParserService {
       default:
         return 'read';
     }
+  }
+
+  /**
+   * Check if endpoint deals with sensitive data
+   */
+  /**
+   * Convert Granite API response to ParsedEndpoint format
+   */
+  private convertGraniteResponse(graniteEndpoints: any[]): ParsedEndpoint[] {
+    return graniteEndpoints.map((endpoint) => ({
+      method: endpoint.method.toUpperCase() as HttpMethod,
+      path: endpoint.path,
+      description: endpoint.description || `${endpoint.method} ${endpoint.path}`,
+      parameters: endpoint.parameters?.map((param: any) => ({
+        name: param.name,
+        in: param.in || 'query',
+        required: param.required || false,
+        type: param.type || 'string',
+        description: param.description,
+      })) || [],
+      requestBody: endpoint.requestBody,
+      responseBody: endpoint.responseBody,
+    }));
   }
 
   /**

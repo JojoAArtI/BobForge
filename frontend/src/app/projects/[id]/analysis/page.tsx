@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 import { api } from '@/lib/api';
-import { Project, Endpoint } from '@/types';
+import { Endpoint, Project } from '@/types';
+import { ActionLink, CodeWindow, EmptyState, Panel, Pill, SectionHeader } from '@/components/site';
 
 export default function AnalysisPage() {
   const router = useRouter();
@@ -18,24 +19,24 @@ export default function AnalysisPage() {
   const [generating, setGenerating] = useState(false);
 
   useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [projectRes, endpointsRes] = await Promise.all([
+          api.projects.get(projectId),
+          api.endpoints.list(projectId),
+        ]);
+
+        setProject(projectRes.data.data);
+        setEndpoints(endpointsRes.data.data || []);
+      } catch (err: any) {
+        setError(err.response?.data?.message || 'Failed to load data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
     loadData();
   }, [projectId]);
-
-  const loadData = async () => {
-    try {
-      const [projectRes, endpointsRes] = await Promise.all([
-        api.projects.get(projectId),
-        api.endpoints.list(projectId),
-      ]);
-
-      setProject(projectRes.data.data);
-      setEndpoints(endpointsRes.data.data || []);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to load data');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleGenerateTools = async () => {
     setGenerating(true);
@@ -50,12 +51,26 @@ export default function AnalysisPage() {
     }
   };
 
+  const statusTone = project?.status === 'ready' ? 'success' : project?.status === 'draft' ? 'default' : 'accent';
+
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-          <p className="mt-4 text-gray-600">Loading analysis...</p>
+      <div className="min-h-[100dvh]">
+        <div className="site-shell py-8">
+          <div className="mb-8 h-4 w-28 rounded-full bg-white/10" />
+          <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="space-y-4">
+              <div className="h-12 w-3/4 rounded-full bg-white/10" />
+              <div className="h-5 w-2/3 rounded-full bg-white/8" />
+              <div className="h-64 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+            </div>
+            <div className="space-y-4">
+              <div className="h-8 w-56 rounded-full bg-white/10" />
+              <div className="h-28 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+              <div className="h-28 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+              <div className="h-28 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -63,172 +78,146 @@ export default function AnalysisPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4">❌</div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Project Not Found</h2>
-          <Link href="/" className="btn btn-primary mt-4">
-            Go Home
-          </Link>
+      <div className="min-h-[100dvh]">
+        <div className="site-shell flex min-h-[100dvh] items-center justify-center">
+          <EmptyState
+            title="Project not found"
+            description="The project could not be loaded from the current route."
+            action={<ActionLink href="/" accent>Go home</ActionLink>}
+          />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
+    <div className="min-h-[100dvh]">
+      <header className="border-b border-white/10 bg-[rgba(7,7,7,0.84)] backdrop-blur-xl">
+        <div className="site-shell">
+          <div className="flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-4">
-              <Link href="/" className="text-gray-600 hover:text-gray-900">
-                ← Back
+              <Link href="/" className="btn btn-secondary px-4 py-2 text-xs uppercase tracking-[0.2em]">
+                Back
               </Link>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">{project.name}</h1>
-                <p className="mt-1 text-sm text-gray-600">{project.description}</p>
+                <p className="section-kicker">Analysis</p>
+                <h1 className="mt-2 text-3xl font-semibold tracking-tighter text-[color:var(--text)]">{project.name}</h1>
+                <p className="mt-2 text-sm text-white/55">{project.description}</p>
               </div>
             </div>
-            <span className="badge bg-blue-100 text-blue-800">
-              {project.status}
-            </span>
+            <Pill tone={statusTone as any}>{project.status}</Pill>
           </div>
         </div>
       </header>
 
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Summary */}
-        <div className="bg-gradient-to-r from-primary-50 to-primary-100 rounded-lg p-6 mb-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                ✅ API Documentation Parsed Successfully
-              </h2>
-              <p className="text-gray-700">
-                Found {endpoints.length} endpoint{endpoints.length !== 1 ? 's' : ''} ready to be converted into MCP tools
-              </p>
-            </div>
-            <div className="text-6xl">🎉</div>
-          </div>
-        </div>
-
-        {/* Error Message */}
-        {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
-            <div className="flex items-start">
-              <div className="text-red-600 text-xl mr-3">⚠️</div>
-              <div>
-                <h3 className="text-sm font-medium text-red-800">Error</h3>
-                <p className="mt-1 text-sm text-red-700">{error}</p>
+      <main className="site-shell space-y-8 py-8 md:py-12">
+        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <Panel className="p-6">
+            <SectionHeader
+              kicker="Parsed output"
+              title="API documentation parsed successfully."
+              description={`Found ${endpoints.length} endpoint${endpoints.length === 1 ? '' : 's'} ready to become MCP tools.`}
+            />
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <div className="subtle-frame p-4">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Status</p>
+                <p className="mt-3 text-sm text-white/68">Structured and ready for tool generation</p>
+              </div>
+              <div className="subtle-frame p-4">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Scope</p>
+                <p className="mt-3 text-sm text-white/68">Endpoints, parameters, and sensitivity flags</p>
               </div>
             </div>
-          </div>
-        )}
+          </Panel>
 
-        {/* Endpoints List */}
-        <div className="card mb-8">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">Extracted Endpoints</h3>
-          
-          {endpoints.length === 0 ? (
-            <div className="text-center py-12 text-gray-500">
-              <div className="text-4xl mb-2">📭</div>
-              <p>No endpoints found</p>
-            </div>
-          ) : (
+          <CodeWindow title="Endpoint summary" subtitle="First pass extraction view">
             <div className="space-y-4">
+              {endpoints.slice(0, 4).map((endpoint, index) => (
+                <div key={endpoint.id} className="rounded-2xl border border-white/10 bg-black/25 p-4">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="text-[11px] uppercase tracking-[0.24em] text-white/35">#{index + 1}</span>
+                    <Pill tone="accent">{endpoint.method}</Pill>
+                    <code className="font-mono text-sm text-white/78">{endpoint.path}</code>
+                    {endpoint.sensitive ? <Pill tone="danger">Sensitive</Pill> : null}
+                  </div>
+                  {endpoint.description ? <p className="mt-3 text-sm leading-relaxed text-white/55">{endpoint.description}</p> : null}
+                </div>
+              ))}
+              {endpoints.length === 0 ? <p className="text-sm text-white/50">No endpoints were extracted from the source material.</p> : null}
+            </div>
+          </CodeWindow>
+        </section>
+
+        {error ? (
+          <Panel className="border-red-400/20 bg-red-400/10 p-4 text-sm text-red-200">
+            {error}
+          </Panel>
+        ) : null}
+
+        <section className="space-y-4">
+          <SectionHeader
+            kicker="Endpoints"
+            title="Extracted endpoints"
+            description="The list stays compact and readable so large APIs do not feel like a wall of white cards."
+          />
+
+          {endpoints.length === 0 ? (
+            <EmptyState
+              title="No endpoints found"
+              description="Try a different documentation source or parse again after adding more endpoint definitions."
+              action={<ActionLink href={`/projects/${projectId}/plan`}>Continue anyway</ActionLink>}
+            />
+          ) : (
+            <div className="space-y-3">
               {endpoints.map((endpoint, index) => (
-                <div
-                  key={endpoint.id}
-                  className="border border-gray-200 rounded-lg p-4 hover:border-primary-300 transition-colors"
-                >
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="flex items-center gap-3">
-                      <span className="text-gray-500 font-mono text-sm">#{index + 1}</span>
-                      <span
-                        className={`badge ${
-                          endpoint.method === 'GET'
-                            ? 'bg-green-100 text-green-800'
-                            : endpoint.method === 'POST'
-                            ? 'bg-blue-100 text-blue-800'
-                            : endpoint.method === 'PUT' || endpoint.method === 'PATCH'
-                            ? 'bg-yellow-100 text-yellow-800'
-                            : 'bg-red-100 text-red-800'
-                        }`}
-                      >
-                        {endpoint.method}
-                      </span>
-                      <code className="text-sm font-mono text-gray-900">{endpoint.path}</code>
+                <Panel key={endpoint.id} className="p-5">
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="text-[11px] uppercase tracking-[0.24em] text-white/35">#{index + 1}</span>
+                        <Pill tone="accent">{endpoint.method}</Pill>
+                        <code className="font-mono text-sm text-white/82">{endpoint.path}</code>
+                      </div>
+                      {endpoint.description ? <p className="max-w-[70ch] text-sm leading-relaxed text-white/58">{endpoint.description}</p> : null}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="badge bg-gray-100 text-gray-800">
-                        {endpoint.operationType}
-                      </span>
-                      {endpoint.sensitive && (
-                        <span className="badge bg-orange-100 text-orange-800">
-                          🔒 Sensitive
-                        </span>
-                      )}
+                    <div className="flex flex-wrap gap-2">
+                      <Pill tone="default">{endpoint.operationType}</Pill>
+                      {endpoint.sensitive ? <Pill tone="danger">Sensitive</Pill> : null}
                     </div>
                   </div>
-                  
-                  {endpoint.description && (
-                    <p className="text-sm text-gray-600 mb-3 ml-16">{endpoint.description}</p>
-                  )}
-                  
-                  {endpoint.parameters && endpoint.parameters.length > 0 && (
-                    <div className="ml-16 mt-3 pt-3 border-t border-gray-100">
-                      <p className="text-xs font-medium text-gray-700 mb-2">Parameters:</p>
-                      <div className="flex flex-wrap gap-2">
+
+                  {endpoint.parameters?.length ? (
+                    <div className="mt-5 border-t border-white/10 pt-4">
+                      <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Parameters</p>
+                      <div className="mt-3 flex flex-wrap gap-2">
                         {endpoint.parameters.map((param, idx) => (
-                          <span
-                            key={idx}
-                            className="inline-flex items-center px-2 py-1 rounded text-xs bg-gray-100 text-gray-700"
-                          >
-                            <code className="font-mono">{param.name}</code>
-                            <span className="mx-1">:</span>
-                            <span className="text-gray-500">{param.type}</span>
-                            {param.required && (
-                              <span className="ml-1 text-red-600">*</span>
-                            )}
+                          <span key={idx} className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/68">
+                            <code className="font-mono text-white/85">{param.name}</code>
+                            <span className="mx-2 text-white/30">|</span>
+                            {param.type}
+                            {param.required ? <span className="ml-2 text-[color:var(--accent)]">*</span> : null}
                           </span>
                         ))}
                       </div>
                     </div>
-                  )}
-                </div>
+                  ) : null}
+                </Panel>
               ))}
             </div>
           )}
-        </div>
+        </section>
 
-        {/* Next Steps */}
-        <div className="flex items-center justify-between pt-6 border-t border-gray-200">
+        <section className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">Next Step</h4>
-            <p className="text-sm text-gray-600">
-              Generate MCP tools from these endpoints
-            </p>
+            <p className="section-kicker">Next step</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--text)]">Generate MCP tools from these endpoints.</h2>
+            <p className="mt-2 text-sm text-white/55">The next screen turns this parsed structure into a tool plan with schema details and risk review.</p>
           </div>
-          <button
-            onClick={handleGenerateTools}
-            disabled={generating || endpoints.length === 0}
-            className="btn btn-primary"
-          >
-            {generating ? (
-              <>
-                <span className="inline-block animate-spin mr-2">⏳</span>
-                Generating Tools...
-              </>
-            ) : (
-              <>
-                Generate MCP Tools →
-              </>
-            )}
+          <button onClick={handleGenerateTools} disabled={generating || endpoints.length === 0} className="btn btn-primary">
+            {generating ? 'Generating tools...' : 'Generate MCP tools'}
           </button>
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 }

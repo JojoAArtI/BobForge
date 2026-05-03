@@ -11,6 +11,7 @@ import { readData, writeData } from '../utils/fileUtils';
 import { toolPlannerService } from './toolPlannerService';
 import { riskEngineService } from './riskEngineService';
 import { mockApiService } from './mockApiService';
+import { watsonxService } from './watsonxService';
 
 const APPROVALS_FILE = 'approvals.json';
 
@@ -37,8 +38,8 @@ class AgentService {
         };
       }
 
-      // Select appropriate tool based on query
-      const selectedTool = this.selectTool(query.query, tools);
+      // Select appropriate tool based on query (with AI if available)
+      const selectedTool = await this.selectTool(query.query, tools);
 
       if (!selectedTool) {
         return {
@@ -48,8 +49,8 @@ class AgentService {
         };
       }
 
-      // Extract parameters from query
-      const parameters = this.extractParameters(query.query, selectedTool);
+      // Extract parameters from query (with AI if available)
+      const parameters = await this.extractParameters(query.query, selectedTool);
 
       // Check if approval is required
       const approvalRequired = await riskEngineService.checkApprovalRequired(
@@ -111,13 +112,39 @@ class AgentService {
 
   /**
    * Select appropriate tool based on query
-   * TODO: Replace with AI-based tool selection using watsonx.ai
+   * Uses watsonx.ai Granite for intelligent tool selection with fallback
    */
-  private selectTool(query: string, tools: MCPTool[]): MCPTool | null {
-    const lowerQuery = query.toLowerCase();
+  private async selectTool(query: string, tools: MCPTool[]): Promise<MCPTool | null> {
+    const useMockMode = process.env.WATSONX_MOCK_MODE === 'true';
 
-    // Simple keyword matching for MVP
-    // TODO: Use watsonx.ai for intelligent tool selection
+    if (!useMockMode && watsonxService.isConfigured()) {
+      try {
+        console.log('[AgentService] Using watsonx.ai Granite for tool selection');
+        const result = await watsonxService.processQuery(query, tools);
+        
+        if (result.tool) {
+          const selectedTool = tools.find(t => t.name === result.tool);
+          if (selectedTool) {
+            console.log(`[AgentService] Granite selected tool: ${result.tool} (confidence: ${result.confidence})`);
+            return selectedTool;
+          }
+        }
+        
+        console.warn('[AgentService] Granite did not return a valid tool, falling back to keyword matching');
+      } catch (error) {
+        console.warn('[AgentService] Granite tool selection failed, falling back to keyword matching:', error);
+      }
+    }
+
+    // Fallback to keyword matching
+    return this.selectToolByKeywords(query, tools);
+  }
+
+  /**
+   * Fallback keyword-based tool selection
+   */
+  private selectToolByKeywords(query: string, tools: MCPTool[]): MCPTool | null {
+    const lowerQuery = query.toLowerCase();
 
     // Check for leave balance queries
     if (lowerQuery.includes('leave') && lowerQuery.includes('balance')) {
@@ -151,9 +178,35 @@ class AgentService {
 
   /**
    * Extract parameters from query
-   * TODO: Replace with AI-based parameter extraction
+   * Uses watsonx.ai Granite for intelligent parameter extraction with fallback
    */
-  private extractParameters(query: string, tool: MCPTool): any {
+  private async extractParameters(query: string, tool: MCPTool): Promise<any> {
+    const useMockMode = process.env.WATSONX_MOCK_MODE === 'true';
+
+    if (!useMockMode && watsonxService.isConfigured()) {
+      try {
+        console.log('[AgentService] Using watsonx.ai Granite for parameter extraction');
+        const result = await watsonxService.processQuery(query, [tool]);
+        
+        if (result.parameters && Object.keys(result.parameters).length > 0) {
+          console.log('[AgentService] Granite extracted parameters:', result.parameters);
+          return result.parameters;
+        }
+        
+        console.warn('[AgentService] Granite did not extract parameters, falling back to regex');
+      } catch (error) {
+        console.warn('[AgentService] Granite parameter extraction failed, falling back to regex:', error);
+      }
+    }
+
+    // Fallback to regex-based extraction
+    return this.extractParametersByRegex(query);
+  }
+
+  /**
+   * Fallback regex-based parameter extraction
+   */
+  private extractParametersByRegex(query: string): any {
     const params: any = {};
 
     // Extract employee ID patterns (E101, E102, etc.)

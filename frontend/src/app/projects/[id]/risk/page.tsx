@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 import { api } from '@/lib/api';
 import { Project, RiskPolicy } from '@/types';
+import { ActionLink, EmptyState, Panel, Pill, SectionHeader } from '@/components/site';
 
 export default function RiskReviewPage() {
   const router = useRouter();
@@ -18,24 +19,24 @@ export default function RiskReviewPage() {
   const [generating, setGenerating] = useState(false);
 
   useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [projectRes, policyRes] = await Promise.all([
+          api.projects.get(projectId),
+          api.risk.getPolicy(projectId),
+        ]);
+
+        setProject(projectRes.data.data);
+        setPolicy(policyRes.data.data);
+      } catch (err: any) {
+        setError(err.response?.data?.message || 'Failed to load data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
     loadData();
   }, [projectId]);
-
-  const loadData = async () => {
-    try {
-      const [projectRes, policyRes] = await Promise.all([
-        api.projects.get(projectId),
-        api.risk.getPolicy(projectId),
-      ]);
-
-      setProject(projectRes.data.data);
-      setPolicy(policyRes.data.data);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to load data');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleGenerateCode = async () => {
     setGenerating(true);
@@ -50,42 +51,42 @@ export default function RiskReviewPage() {
     }
   };
 
-  const getRiskColor = (level: string) => {
+  const getRiskTone = (level: string) => {
     switch (level.toUpperCase()) {
       case 'LOW':
-        return 'bg-green-100 text-green-800 border-green-200';
+        return 'success';
       case 'MEDIUM':
-        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+        return 'accent';
       case 'HIGH':
-        return 'bg-orange-100 text-orange-800 border-orange-200';
+        return 'danger';
       case 'CRITICAL':
-        return 'bg-red-100 text-red-800 border-red-200';
+        return 'danger';
       default:
-        return 'bg-gray-100 text-gray-800 border-gray-200';
+        return 'default';
     }
   };
 
-  const getRiskIcon = (level: string) => {
-    switch (level.toUpperCase()) {
-      case 'LOW':
-        return '✅';
-      case 'MEDIUM':
-        return '⚠️';
-      case 'HIGH':
-        return '🔶';
-      case 'CRITICAL':
-        return '🚨';
-      default:
-        return '❓';
-    }
+  const getToolNameFromRule = (condition: string) => {
+    const match = condition.match(/tool\.name === '([^']+)'/);
+    return match ? match[1] : condition;
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-          <p className="mt-4 text-gray-600">Loading risk assessment...</p>
+      <div className="min-h-[100dvh]">
+        <div className="site-shell py-8">
+          <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+            <div className="space-y-4">
+              <div className="h-12 w-3/4 rounded-full bg-white/10" />
+              <div className="h-28 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+            </div>
+            <div className="space-y-4">
+              <div className="h-8 w-56 rounded-full bg-white/10" />
+              <div className="h-28 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+              <div className="h-28 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+              <div className="h-28 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -93,228 +94,172 @@ export default function RiskReviewPage() {
 
   if (!project || !policy) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4">❌</div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Data Not Found</h2>
-          <Link href="/" className="btn btn-primary mt-4">
-            Go Home
-          </Link>
+      <div className="min-h-[100dvh]">
+        <div className="site-shell flex min-h-[100dvh] items-center justify-center">
+          <EmptyState title="Data not found" description="The project or risk policy could not be loaded." action={<ActionLink href="/" accent>Go home</ActionLink>} />
         </div>
       </div>
     );
   }
 
   const riskCounts = {
-    LOW: policy.tools?.filter(t => t.riskLevel === 'LOW').length || 0,
-    MEDIUM: policy.tools?.filter(t => t.riskLevel === 'MEDIUM').length || 0,
-    HIGH: policy.tools?.filter(t => t.riskLevel === 'HIGH').length || 0,
-    CRITICAL: policy.tools?.filter(t => t.riskLevel === 'CRITICAL').length || 0,
+    LOW: policy.rules?.filter((rule) => rule.riskLevel === 'LOW').length || 0,
+    MEDIUM: policy.rules?.filter((rule) => rule.riskLevel === 'MEDIUM').length || 0,
+    HIGH: policy.rules?.filter((rule) => rule.riskLevel === 'HIGH').length || 0,
+    CRITICAL: policy.rules?.filter((rule) => rule.riskLevel === 'CRITICAL').length || 0,
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
+    <div className="min-h-[100dvh]">
+      <header className="border-b border-white/10 bg-[rgba(7,7,7,0.84)] backdrop-blur-xl">
+        <div className="site-shell">
+          <div className="flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-4">
-              <Link href={`/projects/${projectId}/plan`} className="text-gray-600 hover:text-gray-900">
-                ← Back
+              <Link href={`/projects/${projectId}/plan`} className="btn btn-secondary px-4 py-2 text-xs uppercase tracking-[0.2em]">
+                Back
               </Link>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">{project.name}</h1>
-                <p className="mt-1 text-sm text-gray-600">Risk Assessment & Policy</p>
+                <p className="section-kicker">Risk review</p>
+                <h1 className="mt-2 text-3xl font-semibold tracking-tighter text-[color:var(--text)]">{project.name}</h1>
+                <p className="mt-2 text-sm text-white/55">Risk assessment and policy summary</p>
               </div>
             </div>
-            <span className="badge bg-blue-100 text-blue-800">
-              {project.status}
-            </span>
+            <Pill tone="accent">{project.status}</Pill>
           </div>
         </div>
       </header>
 
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Summary */}
-        <div className="bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg p-6 mb-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                🛡️ Risk Assessment Complete
-              </h2>
-              <p className="text-gray-700">
-                {policy.tools?.length || 0} tool{(policy.tools?.length || 0) !== 1 ? 's' : ''} assessed with safety policies
-              </p>
-            </div>
-            <div className="text-6xl">🔒</div>
-          </div>
-        </div>
-
-        {/* Risk Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="card bg-green-50 border-green-200">
-            <div className="text-center">
-              <div className="text-3xl mb-2">✅</div>
-              <div className="text-2xl font-bold text-green-800">{riskCounts.LOW}</div>
-              <div className="text-sm text-green-700 mt-1">Low Risk</div>
-            </div>
-          </div>
-          <div className="card bg-yellow-50 border-yellow-200">
-            <div className="text-center">
-              <div className="text-3xl mb-2">⚠️</div>
-              <div className="text-2xl font-bold text-yellow-800">{riskCounts.MEDIUM}</div>
-              <div className="text-sm text-yellow-700 mt-1">Medium Risk</div>
-            </div>
-          </div>
-          <div className="card bg-orange-50 border-orange-200">
-            <div className="text-center">
-              <div className="text-3xl mb-2">🔶</div>
-              <div className="text-2xl font-bold text-orange-800">{riskCounts.HIGH}</div>
-              <div className="text-sm text-orange-700 mt-1">High Risk</div>
-            </div>
-          </div>
-          <div className="card bg-red-50 border-red-200">
-            <div className="text-center">
-              <div className="text-3xl mb-2">🚨</div>
-              <div className="text-2xl font-bold text-red-800">{riskCounts.CRITICAL}</div>
-              <div className="text-sm text-red-700 mt-1">Critical Risk</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Error Message */}
-        {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
-            <div className="flex items-start">
-              <div className="text-red-600 text-xl mr-3">⚠️</div>
-              <div>
-                <h3 className="text-sm font-medium text-red-800">Error</h3>
-                <p className="mt-1 text-sm text-red-700">{error}</p>
+      <main className="site-shell space-y-8 py-8 md:py-12">
+        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <Panel className="p-6">
+            <SectionHeader
+              kicker="Safety"
+              title="Risk assessment complete."
+              description={`${policy.rules?.length || 0} rule${(policy.rules?.length || 0) === 1 ? '' : 's'} were classified with approval guidance.`}
+            />
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <div className="subtle-frame p-4">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Policy shape</p>
+                <p className="mt-3 text-sm text-white/68">Low, medium, high, and critical risk bands</p>
+              </div>
+              <div className="subtle-frame p-4">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Approval</p>
+                <p className="mt-3 text-sm text-white/68">High-risk actions stay gated for review</p>
               </div>
             </div>
-          </div>
-        )}
+          </Panel>
 
-        {/* Tools with Risk Assessment */}
-        <div className="card mb-8">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">Tool Risk Assessment</h3>
-          
-          <div className="space-y-4">
-            {policy.tools?.map((tool, index) => (
-              <div
-                key={index}
-                className={`border-2 rounded-lg p-6 ${getRiskColor(tool.riskLevel)}`}
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">{getRiskIcon(tool.riskLevel)}</span>
-                    <div>
-                      <h4 className="text-lg font-semibold text-gray-900">{tool.toolName}</h4>
-                      <p className="text-sm text-gray-600 mt-1">{tool.reason}</p>
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            <Panel className="p-5">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Low</p>
+              <p className="mt-4 text-3xl font-semibold tracking-tighter text-[color:var(--text)]">{riskCounts.LOW}</p>
+            </Panel>
+            <Panel className="p-5">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Medium</p>
+              <p className="mt-4 text-3xl font-semibold tracking-tighter text-[color:var(--text)]">{riskCounts.MEDIUM}</p>
+            </Panel>
+            <Panel className="p-5">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">High</p>
+              <p className="mt-4 text-3xl font-semibold tracking-tighter text-[color:var(--text)]">{riskCounts.HIGH}</p>
+            </Panel>
+            <Panel className="p-5">
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Critical</p>
+              <p className="mt-4 text-3xl font-semibold tracking-tighter text-[color:var(--text)]">{riskCounts.CRITICAL}</p>
+            </Panel>
+          </div>
+        </section>
+
+        {error ? <Panel className="border-red-400/20 bg-red-400/10 p-4 text-sm text-red-200">{error}</Panel> : null}
+
+        <section className="space-y-4">
+          <SectionHeader
+            kicker="Tools"
+            title="Tool risk assessment"
+            description="Each tool is shown with its risk band and approval requirement so the policy is easy to inspect."
+          />
+
+          {policy.rules?.length ? (
+            <div className="space-y-4">
+              {policy.rules.map((rule) => (
+                <Panel key={rule.condition} className="p-5">
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <Pill tone={getRiskTone(rule.riskLevel) as any}>{rule.riskLevel}</Pill>
+                        <h3 className="text-xl font-semibold tracking-tight text-[color:var(--text)]">{getToolNameFromRule(rule.condition)}</h3>
+                      </div>
+                      <p className="max-w-[70ch] text-sm leading-relaxed text-white/58">{rule.reason}</p>
+                    </div>
+                    <div className="flex flex-col items-start gap-2 lg:items-end">
+                      {rule.approvalRequired ? <Pill tone="accent">Approval required</Pill> : <Pill tone="success">No approval required</Pill>}
                     </div>
                   </div>
-                  <div className="flex flex-col items-end gap-2">
-                    <span className={`badge ${getRiskColor(tool.riskLevel)}`}>
-                      {tool.riskLevel}
-                    </span>
-                    {tool.approvalRequired && (
-                      <span className="badge bg-purple-100 text-purple-800">
-                        🔐 Approval Required
-                      </span>
-                    )}
-                  </div>
-                </div>
 
-                {/* Risk Details */}
-                <div className="mt-4 pt-4 border-t border-current border-opacity-20">
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <span className="font-medium">Approval Required:</span>{' '}
-                      <span className={tool.approvalRequired ? 'text-red-700' : 'text-green-700'}>
-                        {tool.approvalRequired ? 'Yes' : 'No'}
-                      </span>
+                  <div className="mt-5 grid gap-3 border-t border-white/10 pt-4 sm:grid-cols-2">
+                    <div className="subtle-frame p-4">
+                      <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Risk level</p>
+                      <p className="mt-3 text-sm text-white/68">{rule.riskLevel}</p>
                     </div>
-                    <div>
-                      <span className="font-medium">Risk Level:</span>{' '}
-                      <span className="font-semibold">{tool.riskLevel}</span>
+                    <div className="subtle-frame p-4">
+                      <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Approval</p>
+                      <p className="mt-3 text-sm text-white/68">{rule.approvalRequired ? 'Yes' : 'No'}</p>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+                </Panel>
+              ))}
+            </div>
+          ) : (
+            <EmptyState title="No policy rules found" description="Risk policy could not find any rules to classify." action={<ActionLink href={`/projects/${projectId}/plan`}>Return to plan</ActionLink>} />
+          )}
+        </section>
 
-        {/* Policy Summary */}
-        <div className="card mb-8">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Policy Summary</h3>
-          <div className="bg-gray-50 rounded-lg p-4">
-            <dl className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-              <div>
-                <dt className="font-medium text-gray-700">Project ID:</dt>
-                <dd className="text-gray-900 font-mono mt-1">{policy.projectId}</dd>
+        <section className="grid gap-6 lg:grid-cols-[1fr_1fr]">
+          <Panel className="p-6">
+            <p className="section-kicker">Policy summary</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--text)]">Enterprise safety</h2>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <div className="subtle-frame p-4">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Project ID</p>
+                <p className="mt-3 font-mono text-xs text-white/75">{policy.projectId}</p>
               </div>
-              <div>
-                <dt className="font-medium text-gray-700">Total Tools:</dt>
-                <dd className="text-gray-900 mt-1">{policy.tools?.length || 0}</dd>
+              <div className="subtle-frame p-4">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Total tools</p>
+                <p className="mt-3 text-sm text-white/68">{policy.rules?.length || 0}</p>
               </div>
-              <div>
-                <dt className="font-medium text-gray-700">Requires Approval:</dt>
-                <dd className="text-gray-900 mt-1">
-                  {policy.tools?.filter(t => t.approvalRequired).length || 0} tools
-                </dd>
+              <div className="subtle-frame p-4">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Requires approval</p>
+                <p className="mt-3 text-sm text-white/68">{policy.rules?.filter((rule) => rule.approvalRequired).length || 0}</p>
               </div>
-              <div>
-                <dt className="font-medium text-gray-700">Created:</dt>
-                <dd className="text-gray-900 mt-1">
-                  {new Date(policy.createdAt).toLocaleString()}
-                </dd>
+              <div className="subtle-frame p-4">
+                <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Created</p>
+                <p className="mt-3 text-sm text-white/68">{new Date(policy.createdAt).toLocaleString()}</p>
               </div>
-            </dl>
-          </div>
-        </div>
+            </div>
+          </Panel>
 
-        {/* Info Box */}
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-8">
-          <h3 className="text-sm font-semibold text-purple-900 mb-2">🛡️ Enterprise Safety</h3>
-          <p className="text-sm text-purple-800 mb-3">
-            BobForge automatically assesses risk for each tool to ensure safe AI agent execution:
-          </p>
-          <ul className="text-sm text-purple-800 space-y-1 ml-4 list-disc">
-            <li><strong>LOW:</strong> Safe read operations (GET requests, non-sensitive data)</li>
-            <li><strong>MEDIUM:</strong> Read operations with sensitive data (employee info, payroll)</li>
-            <li><strong>HIGH:</strong> Write operations (POST, PUT, PATCH)</li>
-            <li><strong>CRITICAL:</strong> Destructive operations (DELETE, financial transactions)</li>
-          </ul>
-        </div>
+          <Panel className="p-6">
+            <p className="section-kicker">Risk legend</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--text)]">How the bands work</h2>
+            <div className="mt-5 space-y-3 text-sm leading-relaxed text-white/60">
+              <p>Low: safe read operations and non-sensitive data.</p>
+              <p>Medium: reads that expose sensitive information.</p>
+              <p>High: write operations that can change state.</p>
+              <p>Critical: destructive or financially sensitive actions.</p>
+            </div>
+          </Panel>
+        </section>
 
-        {/* Next Steps */}
-        <div className="flex items-center justify-between pt-6 border-t border-gray-200">
+        <section className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">Next Step</h4>
-            <p className="text-sm text-gray-600">
-              Generate complete MCP server code with tests
-            </p>
+            <p className="section-kicker">Next step</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--text)]">Generate the final server code.</h2>
+            <p className="mt-2 text-sm text-white/55">Once the risk policy looks right, the next step is code generation and preview.</p>
           </div>
-          <button
-            onClick={handleGenerateCode}
-            disabled={generating}
-            className="btn btn-primary"
-          >
-            {generating ? (
-              <>
-                <span className="inline-block animate-spin mr-2">⏳</span>
-                Generating Code...
-              </>
-            ) : (
-              <>
-                Generate Code →
-              </>
-            )}
+          <button onClick={handleGenerateCode} disabled={generating} className="btn btn-primary">
+            {generating ? 'Generating code...' : 'Generate code'}
           </button>
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 }

@@ -48,7 +48,14 @@ ibmcloud resource service-instance watsonx-ai --output json
 
 ### Backend Configuration
 
-Edit `backend/.env`:
+Create `backend/.env` from the example:
+
+```bash
+cd backend
+cp .env.example .env
+```
+
+Edit `backend/.env` with your credentials:
 
 ```env
 # Server Configuration
@@ -64,7 +71,24 @@ WATSONX_PROJECT_ID=your_project_id_here
 WATSONX_MODEL_ID=ibm/granite-13b-chat-v2
 WATSONX_MAX_TOKENS=2000
 WATSONX_TEMPERATURE=0.7
+
+# Mock Mode (set to false to use real watsonx.ai)
+WATSONX_MOCK_MODE=false
+
+# Frontend URL (for CORS configuration)
+FRONTEND_URL=http://localhost:3000
 ```
+
+**Configuration Options:**
+
+- `WATSONX_API_KEY`: Your IBM Cloud API key (required)
+- `WATSONX_URL`: watsonx.ai service endpoint (region-specific)
+- `WATSONX_PROJECT_ID`: Your watsonx.ai project ID (required)
+- `WATSONX_MODEL_ID`: Granite model to use (see options below)
+- `WATSONX_MAX_TOKENS`: Maximum tokens to generate (default: 2000)
+- `WATSONX_TEMPERATURE`: Creativity level 0.0-1.0 (default: 0.7)
+- `WATSONX_MOCK_MODE`: Use mock data instead of real API (default: true)
+- `FRONTEND_URL`: Frontend URL for CORS (default: http://localhost:3000)
 
 ### Available Granite Models
 

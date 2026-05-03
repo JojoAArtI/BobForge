@@ -49,12 +49,33 @@ cd ../backend
 cp .env.example .env
 ```
 
-Edit `.env` if needed (defaults work fine):
-```
+Edit `backend/.env` with your watsonx.ai credentials:
+```env
+# Server Configuration
 PORT=3001
 NODE_ENV=development
+
+# watsonx.ai Configuration
+WATSONX_API_KEY=your_api_key_here
+WATSONX_URL=https://us-south.ml.cloud.ibm.com
+WATSONX_PROJECT_ID=your_project_id_here
+
+# Model Configuration
+WATSONX_MODEL_ID=ibm/granite-13b-chat-v2
+WATSONX_MAX_TOKENS=2000
+WATSONX_TEMPERATURE=0.7
+
+# Mock Mode (set to false to use real watsonx.ai)
+WATSONX_MOCK_MODE=true
+
+# Frontend URL (for CORS configuration)
 FRONTEND_URL=http://localhost:3000
 ```
+
+**Important:**
+- Get your watsonx.ai credentials from [IBM Cloud](https://cloud.ibm.com/)
+- Set `WATSONX_MOCK_MODE=false` when you have valid credentials
+- Keep `WATSONX_MOCK_MODE=true` to use mock data for testing
 
 **Frontend:**
 ```bash

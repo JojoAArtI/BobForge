@@ -303,6 +303,1114 @@
       "defaultApprovalRequired": false,
       "createdAt": "2026-05-03T07:39:06.570Z",
       "updatedAt": "2026-05-03T07:39:06.570Z"
+    },
+    {
+      "projectId": "d8a1239a-6558-4163-b657-19e7c9654313",
+      "rules": [
+        {
+          "condition": "tool.name === 'get_employees_leave_balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave_request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        }
+      ],
+      "defaultApprovalRequired": false,
+      "createdAt": "2026-05-03T10:09:37.766Z",
+      "updatedAt": "2026-05-03T10:09:37.766Z"
+    },
+    {
+      "projectId": "74d4f8ca-2c0b-490d-86b5-72b96ec5239e",
+      "rules": [
+        {
+          "condition": "tool.name === 'get_employees_leave_balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave_request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        }
+      ],
+      "defaultApprovalRequired": false,
+      "createdAt": "2026-05-03T10:24:48.532Z",
+      "updatedAt": "2026-05-03T10:24:48.532Z"
+    },
+    {
+      "projectId": "751da5b5-7682-4fbe-8f32-22d4e2ea3874",
+      "rules": [
+        {
+          "condition": "tool.name === 'get_employees_leave_balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave_request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        }
+      ],
+      "defaultApprovalRequired": false,
+      "createdAt": "2026-05-03T12:11:24.725Z",
+      "updatedAt": "2026-05-03T12:11:24.725Z"
+    },
+    {
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "rules": [
+        {
+          "condition": "tool.name === 'create_auth_register'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'create_auth_login'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'create_auth_refresh'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'create_auth_logout'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_auth_me'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_users'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_users'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_users'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'update_users'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'modify_users_status'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_users'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'create_users_invite'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'create_users_reset_password'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'get_organizations'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_organizations'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_organizations'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'update_organizations'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_organizations'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_organizations_members'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_organizations_members'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'delete_organizations_members'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_projects'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_projects'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_projects'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'update_projects'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'modify_projects_status'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_projects'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_projects_members'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_projects_members'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_projects_members'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_projects_tasks'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_tasks'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_projects_tasks'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'update_tasks'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'modify_tasks_status'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'modify_tasks_assignee'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_tasks'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'create_tasks_comments'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_tasks_comments'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_projects_files'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_files'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_projects_files'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_files'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'create_files_rename'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_billing_subscription'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_billing_invoices'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_billing_invoices'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_billing_subscription_upgrade'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'create_billing_subscription_downgrade'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'create_billing_payment_methods'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'get_billing_payment_methods'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'delete_billing_payment_methods'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_notifications'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'modify_notifications_read'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'modify_notifications_read_all'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'create_notifications_test'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_audit_logs'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_audit_logs'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_analytics_overview'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_analytics_users'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_analytics_projects'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_analytics_billing'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_search'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_webhooks'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_webhooks'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'get_webhooks'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'update_webhooks'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_webhooks'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'create_webhooks_test'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'get_integrations'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_integrations'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_integrations'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'create_integrations_sync'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_reports'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_reports'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_reports'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_reports_run'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_reports'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_admin_health'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'get_admin_metrics'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'get_admin_users'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_admin_organizations_suspend'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'create_admin_organizations_unsuspend'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        }
+      ],
+      "defaultApprovalRequired": false,
+      "createdAt": "2026-05-03T12:17:51.567Z",
+      "updatedAt": "2026-05-03T12:17:51.567Z"
+    },
+    {
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "rules": [
+        {
+          "condition": "tool.name === 'create_auth_register'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'create_auth_login'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'create_auth_refresh'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'create_auth_logout'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_auth_me'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_users'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_users'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_users'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'update_users'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'modify_users_status'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_users'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'create_users_invite'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'create_users_reset_password'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'get_organizations'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_organizations'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_organizations'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'update_organizations'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_organizations'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_organizations_members'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_organizations_members'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'delete_organizations_members'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_projects'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_projects'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_projects'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'update_projects'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'modify_projects_status'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_projects'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_projects_members'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_projects_members'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_projects_members'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_projects_tasks'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_tasks'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_projects_tasks'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'update_tasks'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'modify_tasks_status'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'modify_tasks_assignee'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_tasks'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'create_tasks_comments'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_tasks_comments'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_projects_files'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_files'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_projects_files'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_files'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'create_files_rename'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_billing_subscription'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_billing_invoices'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_billing_invoices'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_billing_subscription_upgrade'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'create_billing_subscription_downgrade'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'create_billing_payment_methods'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'get_billing_payment_methods'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'delete_billing_payment_methods'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_notifications'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'modify_notifications_read'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'modify_notifications_read_all'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'create_notifications_test'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_audit_logs'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_audit_logs'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_analytics_overview'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_analytics_users'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_analytics_projects'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_analytics_billing'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_search'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'get_webhooks'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_webhooks'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'get_webhooks'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'update_webhooks'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_webhooks'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'create_webhooks_test'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'get_integrations'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_integrations'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_integrations'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'create_integrations_sync'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_reports'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_reports'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_reports'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_reports_run'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'delete_reports'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Destructive operation that permanently removes data"
+        },
+        {
+          "condition": "tool.name === 'get_admin_health'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'get_admin_metrics'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'get_admin_users'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_admin_organizations_suspend'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        },
+        {
+          "condition": "tool.name === 'create_admin_organizations_unsuspend'",
+          "riskLevel": "CRITICAL",
+          "approvalRequired": true,
+          "reason": "Modifies sensitive data (payroll, admin, etc.)"
+        }
+      ],
+      "defaultApprovalRequired": false,
+      "createdAt": "2026-05-03T12:23:20.830Z",
+      "updatedAt": "2026-05-03T12:23:20.830Z"
     }
   ]
 }

@@ -444,6 +444,2877 @@
           "type": "Employee"
         }
       ]
+    },
+    {
+      "id": "f28726bc-0817-44bc-b823-6085c52237c0",
+      "projectId": "d8a1239a-6558-4163-b657-19e7c9654313",
+      "method": "GET",
+      "path": "/employees/{id}/leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "63521b4c-7bd7-4f2a-87a3-d86b5c04e2e3",
+      "projectId": "d8a1239a-6558-4163-b657-19e7c9654313",
+      "method": "POST",
+      "path": "/employees/{id}/leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "2cccc394-85af-400a-af80-de44b01f5fb8",
+      "projectId": "d8a1239a-6558-4163-b657-19e7c9654313",
+      "method": "GET",
+      "path": "/employees/{id}/payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "operationType": "read",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "cbc21925-3a75-4ca4-8b67-9fa77770e9fd",
+      "projectId": "d8a1239a-6558-4163-b657-19e7c9654313",
+      "method": "POST",
+      "path": "/hr/tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "employee_id",
+          "in": "body",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "8f7fb110-7037-4213-abc5-5ef1857974b5",
+      "projectId": "74d4f8ca-2c0b-490d-86b5-72b96ec5239e",
+      "method": "GET",
+      "path": "/employees/{id}/leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "e2de1796-fcf0-4457-b80a-19def814060c",
+      "projectId": "74d4f8ca-2c0b-490d-86b5-72b96ec5239e",
+      "method": "POST",
+      "path": "/employees/{id}/leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "6d00bfd3-ffd7-4808-a766-2f226533e450",
+      "projectId": "74d4f8ca-2c0b-490d-86b5-72b96ec5239e",
+      "method": "GET",
+      "path": "/employees/{id}/payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "operationType": "read",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "286e74f9-c39d-49e2-ae7b-2f59a425aa4d",
+      "projectId": "74d4f8ca-2c0b-490d-86b5-72b96ec5239e",
+      "method": "POST",
+      "path": "/hr/tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "employee_id",
+          "in": "body",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "5ce89be1-d469-4442-8778-19f5ffac5cb0",
+      "projectId": "7639c606-1cc1-4638-b514-b124337a1bc4",
+      "method": "GET",
+      "path": "/employees/{id}/leave-balance",
+      "description": "Returns the current leave balance for an employee. - id (path, required): string - Employee ID (e.g., E101, E102) Response: Returns leave balance in days",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Employee ID (e.g., E101, E102)"
+        }
+      ]
+    },
+    {
+      "id": "4efb6e05-e6b5-415e-814d-7f128de12656",
+      "projectId": "7639c606-1cc1-4638-b514-b124337a1bc4",
+      "method": "POST",
+      "path": "/employees/{id}/leave-request",
+      "description": "Submit a new leave request for an employee. - id (path, required): string - Employee ID - leave_type: string (annual, sick, personal) - start_date: string (YYYY-MM-DD) - end_date: string (YYYY-MM-DD) - reason: string Response: Returns request ID and status",
+      "operationType": "write",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Employee ID"
+        }
+      ]
+    },
+    {
+      "id": "65f7e782-768d-458d-b308-9879cda27c57",
+      "projectId": "7639c606-1cc1-4638-b514-b124337a1bc4",
+      "method": "GET",
+      "path": "/employees/{id}/payroll",
+      "description": "Get payroll information for an employee. - id (path, required): string - Employee ID Response: Returns salary, deductions, and payment status",
+      "operationType": "read",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Employee ID"
+        }
+      ]
+    },
+    {
+      "id": "c7d8c7da-2082-4f20-8a46-271cc7682b6d",
+      "projectId": "7639c606-1cc1-4638-b514-b124337a1bc4",
+      "method": "POST",
+      "path": "/hr/tickets",
+      "description": "Create a new HR support ticket. - employee_id: string - category: string (benefits, payroll, leave, other) - subject: string - description: string - priority: string (low, medium, high) Response: Returns ticket ID and status ```",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "5b47634b-3009-4c97-bf42-56a63c5e089d",
+      "projectId": "e5237b0a-b014-430b-bd75-b9d012536eaa",
+      "method": "POST",
+      "path": "/devices",
+      "description": "Register a new IoT device. - device_id: string - Unique device identifier - device_type: string - Type of device (sensor, actuator, gateway) - location: string - Physical location - metadata: object - Additional device information Response: Returns device registration confirmation",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "6886859c-e9a7-4bdf-82cd-f9dada75ae1a",
+      "projectId": "e5237b0a-b014-430b-bd75-b9d012536eaa",
+      "method": "GET",
+      "path": "/devices/{device_id}",
+      "description": "Get device information. - device_id (path, required): string - Device ID Response: Returns device details and status Device Control",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "device_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: device_id"
+        },
+        {
+          "name": "device_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Device ID"
+        }
+      ]
+    },
+    {
+      "id": "c10fe679-d62a-4930-8ef0-9cf96c94f41f",
+      "projectId": "e5237b0a-b014-430b-bd75-b9d012536eaa",
+      "method": "POST",
+      "path": "/devices/{device_id}/command",
+      "description": "Send command to device. - device_id (path, required): string - Device ID - command: string - Command to execute - parameters: object - Command parameters Response: Returns command execution status",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "device_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: device_id"
+        },
+        {
+          "name": "device_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Device ID"
+        }
+      ]
+    },
+    {
+      "id": "0f2ab32f-6682-49ad-a09e-3bcfcc247755",
+      "projectId": "e5237b0a-b014-430b-bd75-b9d012536eaa",
+      "method": "GET",
+      "path": "/devices/{device_id}/status",
+      "description": "Get current device status. - device_id (path, required): string - Device ID Response: Returns device status (online, offline, error) Data Collection",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "device_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: device_id"
+        },
+        {
+          "name": "device_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Device ID"
+        }
+      ]
+    },
+    {
+      "id": "a5079088-4dcc-499c-b4cb-861c6447cffc",
+      "projectId": "e5237b0a-b014-430b-bd75-b9d012536eaa",
+      "method": "GET",
+      "path": "/devices/{device_id}/data",
+      "description": "Get sensor data from device. - device_id (path, required): string - Device ID - start_time (query, optional): string - Start timestamp - end_time (query, optional): string - End timestamp - metric (query, optional): string - Specific metric to retrieve Response: Returns array of sensor readings",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "device_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: device_id"
+        },
+        {
+          "name": "device_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Device ID"
+        }
+      ]
+    },
+    {
+      "id": "efa81545-e4f2-4e7f-8f01-aece978681f6",
+      "projectId": "e5237b0a-b014-430b-bd75-b9d012536eaa",
+      "method": "POST",
+      "path": "/devices/{device_id}/data",
+      "description": "Upload sensor data. - device_id (path, required): string - Device ID - timestamp: string - Reading timestamp - metrics: object - Sensor readings Response: Returns data upload confirmation",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "device_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: device_id"
+        },
+        {
+          "name": "device_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Device ID"
+        }
+      ]
+    },
+    {
+      "id": "c3ebc319-7ac5-4c8e-807a-dee732dc5814",
+      "projectId": "751da5b5-7682-4fbe-8f32-22d4e2ea3874",
+      "method": "GET",
+      "path": "/employees/{id}/leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "e097dcb6-f2c5-4a17-9ae7-3ebb86f84471",
+      "projectId": "751da5b5-7682-4fbe-8f32-22d4e2ea3874",
+      "method": "POST",
+      "path": "/employees/{id}/leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "4dea780b-24f6-42a5-adf1-d4989a1a0fdb",
+      "projectId": "751da5b5-7682-4fbe-8f32-22d4e2ea3874",
+      "method": "GET",
+      "path": "/employees/{id}/payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "operationType": "read",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "902c4a95-2e29-4f15-b1ef-d3c6be0bcb17",
+      "projectId": "751da5b5-7682-4fbe-8f32-22d4e2ea3874",
+      "method": "POST",
+      "path": "/hr/tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "employee_id",
+          "in": "body",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "ddc40d45-a1ac-496b-952e-15c56f41afef",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/auth/register",
+      "description": "Creates a new user account. Request body: { \"name\": \"Maya Chen\", \"email\": \"maya@example.com\", \"password\": \"StrongPass123!\", \"company_name\": \"Northwind Labs\" } Response: { \"success\": true, \"data\": { \"user_id\": \"usr_01HZX9\", \"email\": \"maya@example.com\", \"name\": \"Maya Chen\", \"company_id\": \"org_01HZX1\" } }",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "8241a036-0cd3-4796-bc1c-a1aed00c817b",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/auth/login",
+      "description": "Authenticates a user and returns access tokens. Request body: { \"email\": \"maya@example.com\", \"password\": \"StrongPass123!\" } Response: { \"success\": true, \"data\": { \"access_token\": \"eyJhbGciOiJIUzI1NiIs...\", \"refresh_token\": \"rft_01HZX9...\", \"expires_in\": 3600 } }",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "89061d6a-3010-4662-b762-48f30fc6670f",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/auth/refresh",
+      "description": "Refreshes an access token. Request body: { \"refresh_token\": \"rft_01HZX9...\" }",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "b7b66efe-4a5f-4782-89b4-6fa18fc4600b",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/auth/logout",
+      "description": "Revokes the current session.",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "f8ab9500-3941-48c5-9269-1dded95eaeef",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/auth/me",
+      "description": "Returns the current authenticated user. Users Endpoints",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "a288a920-4dcd-4013-92cb-527ae0ce850c",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/users",
+      "description": "Lists users in the current organization. Query parameters: page, limit, search, role, status",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "c5b6e3e5-4ea9-446a-8108-57c02050103d",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/users/{user_id}",
+      "description": "Returns a single user.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "3cb7eae6-3192-42a8-9bd5-5ff0627e2c81",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/users",
+      "description": "Creates a new user. Request body: { \"name\": \"Ari Patel\", \"email\": \"ari@example.com\", \"role\": \"manager\", \"department\": \"operations\" }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "ca28ce98-0875-4040-a41e-162b285bfcb6",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PUT",
+      "path": "/users/{user_id}",
+      "description": "Updates a user.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "d411651d-6589-4909-8488-5f48f039c400",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PATCH",
+      "path": "/users/{user_id}/status",
+      "description": "Updates user status. Request body: { \"status\": \"active\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "d01a0a82-db95-415d-a3f3-17f9ec7a882a",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/users/{user_id}",
+      "description": "Deletes a user.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "7c1ff3c9-04ef-4073-9da7-3c29a11fe080",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/users/{user_id}/invite",
+      "description": "Sends an invitation email.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "f0a1bc73-951b-4a69-a9ff-cc85d746bc64",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/users/{user_id}/reset-password",
+      "description": "Sends a password reset link. Organizations Endpoints",
+      "operationType": "write",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "944fac88-f23a-41d8-85e1-7419024e5c96",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/organizations",
+      "description": "Lists organizations visible to the current user.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "0aa124a3-679a-4cd2-8da4-e6ae16556428",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/organizations/{org_id}",
+      "description": "Returns organization details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "bddfe12f-337f-4d15-b226-5e69e533e5fd",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/organizations",
+      "description": "Creates a new organization. Request body: { \"name\": \"Northwind Labs\", \"industry\": \"software\", \"plan\": \"enterprise\" }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "b6d52ce6-d23c-4053-a59a-a61c0ae2fc28",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PUT",
+      "path": "/organizations/{org_id}",
+      "description": "Updates organization details.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "f88bf8dd-6a17-4ee1-91f7-693ea9376d99",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/organizations/{org_id}",
+      "description": "Deletes an organization.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "40d143f7-7a39-4502-b6a2-7536fbca7983",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/organizations/{org_id}/members",
+      "description": "Lists organization members.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "2cb7bcc4-2eb2-4fd0-91a2-161472faf4e8",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/organizations/{org_id}/members",
+      "description": "Adds a member to the organization. Request body: { \"user_id\": \"usr_01HZX9\", \"role\": \"admin\" }",
+      "operationType": "write",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "3c3b536d-8e7d-41e7-b991-63e5f632c4e4",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/organizations/{org_id}/members/{user_id}",
+      "description": "Removes a member from the organization. Projects Endpoints",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        },
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "0f1ba3e5-c567-4ebc-bbb7-10f0d9ee0845",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/projects",
+      "description": "Lists projects. Query parameters: page, limit, search, status, owner_id",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "368cbbd8-67fc-4a7d-8e7e-5d23ede966e0",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "description": "Returns project details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "5c336b18-0254-4ccc-bff8-6adfdaac6f96",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/projects",
+      "description": "Creates a project. Request body: { \"name\": \"Customer Portal Revamp\", \"description\": \"Modernize the customer portal UX\", \"owner_id\": \"usr_01HZX9\", \"priority\": \"high\" }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "518a5334-7761-42fc-a4b1-fe80cbcbb9a9",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PUT",
+      "path": "/projects/{project_id}",
+      "description": "Updates a project.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "d9423259-04e6-4091-9c0a-edc9d5c22a6f",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/status",
+      "description": "Updates project status. Request body: { \"status\": \"in_progress\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "c62932ba-05b0-47df-9fd5-b95b9b1a9840",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/projects/{project_id}",
+      "description": "Deletes a project.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "58bbdc43-46ba-4785-a902-44d4631dfec2",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "description": "Lists project members.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "9b12517e-b266-4089-a061-4c27289597ae",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "description": "Adds a project member. Request body: { \"user_id\": \"usr_02ABCD\", \"role\": \"editor\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "d2e798e7-ea47-417b-9b2b-e80c4cd43025",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "description": "Removes a project member. Tasks Endpoints",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        },
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "9d281c22-ef4f-497d-972f-31c012d35714",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "description": "Lists tasks for a project. Query parameters: page, limit, status, assignee_id, priority",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "4f8b681f-4aef-4d4f-85a1-2c664a5e0c61",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/tasks/{task_id}",
+      "description": "Returns task details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "6b5545fd-78c1-4271-907b-89febf0f56e2",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "description": "Creates a task. Request body: { \"title\": \"Design login flow\", \"description\": \"Create wireframes and review states\", \"assignee_id\": \"usr_01HZX9\", \"priority\": \"medium\", \"due_date\": \"2026-05-12\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "8a2fc521-6f8a-43f1-b1f8-94588208aede",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PUT",
+      "path": "/tasks/{task_id}",
+      "description": "Updates a task.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "a72bac91-0684-4a29-a294-611bb9941feb",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PATCH",
+      "path": "/tasks/{task_id}/status",
+      "description": "Updates task status. Request body: { \"status\": \"done\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "91ca8ad7-6205-446e-9ad9-9d051bd0c902",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PATCH",
+      "path": "/tasks/{task_id}/assignee",
+      "description": "Reassigns a task. Request body: { \"assignee_id\": \"usr_02ABCD\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "42b9b435-edbf-466f-acf2-ee5fd1710748",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/tasks/{task_id}",
+      "description": "Deletes a task.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "a8596d0e-07b6-43ec-9ebe-9af17f4e4347",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/tasks/{task_id}/comments",
+      "description": "Adds a comment to a task. Request body: { \"body\": \"This is ready for review.\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "17330898-4048-4a1f-a66e-edefceb8548c",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/tasks/{task_id}/comments",
+      "description": "Lists task comments. Files Endpoints",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "68490ba7-d26f-4f29-97f2-1bbcc106c683",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/projects/{project_id}/files",
+      "description": "Lists uploaded files for a project.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "4117cab6-25ce-465d-987d-515b54858b99",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/files/{file_id}",
+      "description": "Returns file metadata.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "file_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: file_id"
+        }
+      ]
+    },
+    {
+      "id": "19bb6318-82dd-4736-b8d3-8c7f3deb8e85",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/projects/{project_id}/files",
+      "description": "Uploads a new file. Request: multipart/form-data Fields: file, filename, category",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "c0770688-0470-47d2-a2ac-9a2fb7e98047",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/files/{file_id}",
+      "description": "Deletes a file.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "file_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: file_id"
+        }
+      ]
+    },
+    {
+      "id": "12238dee-5d90-4934-96dd-b12bcca17c3e",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/files/{file_id}/rename",
+      "description": "Renames a file. Request body: { \"filename\": \"spec-v2.pdf\" } Billing Endpoints",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "file_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: file_id"
+        }
+      ]
+    },
+    {
+      "id": "47345e62-d0bc-4c27-8208-fa12f7de94c3",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/billing/subscription",
+      "description": "Returns the current subscription.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "e2bf1dd3-ff1a-413b-bb18-503328ac4fc1",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/billing/invoices",
+      "description": "Lists invoices.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "4f85fa3f-27f4-4ed4-bb97-49a988df0db7",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/billing/invoices/{invoice_id}",
+      "description": "Returns invoice details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "invoice_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: invoice_id"
+        }
+      ]
+    },
+    {
+      "id": "cdf03a38-3c03-49fb-b62e-9c91c533c672",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/billing/subscription/upgrade",
+      "description": "Upgrades the plan. Request body: { \"plan\": \"enterprise\", \"billing_cycle\": \"annual\" }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "af1d2672-4af1-436c-92ef-a07e1816203a",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/billing/subscription/downgrade",
+      "description": "Downgrades the plan.",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "ebec7388-735b-4925-a3ba-e7cdd8d936a2",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/billing/payment-methods",
+      "description": "Adds a payment method. Request body: { \"type\": \"card\", \"token\": \"tok_visa_123\" }",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "18239aab-c2b1-49b4-aaa1-79f719077034",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/billing/payment-methods",
+      "description": "Lists payment methods.",
+      "operationType": "read",
+      "sensitive": true
+    },
+    {
+      "id": "0683c8eb-d8ba-40f5-8d32-2797369479d7",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/billing/payment-methods/{method_id}",
+      "description": "Removes a payment method. Notifications Endpoints",
+      "operationType": "delete",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "method_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: method_id"
+        }
+      ]
+    },
+    {
+      "id": "67cf5048-abaf-4e8c-b503-f34281d36e49",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/notifications",
+      "description": "Lists notifications. Query parameters: page, limit, unread_only",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "29482072-77cc-4b0a-a074-c15f6e14504b",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PATCH",
+      "path": "/notifications/{notification_id}/read",
+      "description": "Marks a notification as read.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "notification_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: notification_id"
+        }
+      ]
+    },
+    {
+      "id": "f3bbeb91-7ccf-4519-9527-a5477ccf30c8",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PATCH",
+      "path": "/notifications/read-all",
+      "description": "Marks all notifications as read.",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "a1f4ef71-ddbc-4210-9e21-cff0456e9c33",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/notifications/test",
+      "description": "Sends a test notification to the current user. Audit Logs Endpoints",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "29d51989-926b-4143-b4af-8f417f5f176f",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/audit-logs",
+      "description": "Lists audit log entries. Query parameters: page, limit, actor_id, action, resource_type, date_from, date_to",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "a9cbe5e8-ea1a-4233-9e1d-2468c7f2f517",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/audit-logs/{log_id}",
+      "description": "Returns a single audit entry. Analytics Endpoints",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "log_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: log_id"
+        }
+      ]
+    },
+    {
+      "id": "8f310514-ff9a-44a8-b58d-aed4e09c5808",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/analytics/overview",
+      "description": "Returns high-level platform metrics. Response: { \"success\": true, \"data\": { \"active_users\": 1842, \"projects_created_30d\": 126, \"tasks_completed_30d\": 948, \"revenue_mrr\": 48200 } }",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "5d2d1b4e-b551-4878-81b6-d0d4783fcdf6",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/analytics/users",
+      "description": "Returns user growth analytics.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "2bf2e18c-b7b7-430f-bbd0-bf71a99f1080",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/analytics/projects",
+      "description": "Returns project analytics.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "6e27c23e-02ab-4cfd-b293-3645d3ff72b0",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/analytics/billing",
+      "description": "Returns billing analytics. Search Endpoints",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "cba6a9bb-23ed-436c-9130-3fdc603622ef",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/search",
+      "description": "Searches across users, projects, tasks, files, and notifications. Query parameters: q, type, page, limit Webhooks Endpoints",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "fd5a1e15-d288-4209-a775-83166c9b7ab8",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/webhooks",
+      "description": "Lists webhook subscriptions.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "6d277da0-da8c-4840-ba2a-e872c63a11f4",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/webhooks",
+      "description": "Creates a webhook subscription. Request body: { \"name\": \"task-updates\", \"url\": \"https://example.com/webhooks/task-updates\", \"events\": [\"task.created\", \"task.updated\", \"task.deleted\"], \"secret\": \"whsec_123\" }",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "5f9a6b3f-0c00-4a28-a0f0-33986004f4af",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/webhooks/{webhook_id}",
+      "description": "Returns webhook details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "webhook_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: webhook_id"
+        }
+      ]
+    },
+    {
+      "id": "faea4a4d-5dd9-4a85-a716-2ab22631508e",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "PUT",
+      "path": "/webhooks/{webhook_id}",
+      "description": "Updates a webhook subscription.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "webhook_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: webhook_id"
+        }
+      ]
+    },
+    {
+      "id": "39117f5a-c227-475e-b783-27fddc525473",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/webhooks/{webhook_id}",
+      "description": "Deletes a webhook subscription.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "webhook_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: webhook_id"
+        }
+      ]
+    },
+    {
+      "id": "4dbbde8f-83e0-49bd-b972-f9d8b2c36acb",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/webhooks/{webhook_id}/test",
+      "description": "Sends a test event. Webhook Events task.created task.updated task.deleted project.created project.updated user.invited invoice.paid invoice.failed Integrations Endpoints",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "webhook_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: webhook_id"
+        }
+      ]
+    },
+    {
+      "id": "9edf36f0-06e5-417f-b28e-f42ea86331cb",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/integrations",
+      "description": "Lists connected integrations.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "32104bb9-faf0-41ab-9792-cf2a3d843493",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/integrations",
+      "description": "Connects a new integration. Request body: { \"provider\": \"slack\", \"settings\": { \"workspace\": \"northwind\" } }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "177e4fb6-d660-4a0c-b40b-e9413b552041",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/integrations/{integration_id}",
+      "description": "Disconnects an integration.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "integration_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: integration_id"
+        }
+      ]
+    },
+    {
+      "id": "4e99a045-df6c-4942-9ec4-d30e7da7775f",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/integrations/{integration_id}/sync",
+      "description": "Triggers a manual sync. Reports Endpoints",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "integration_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: integration_id"
+        }
+      ]
+    },
+    {
+      "id": "4191f6dc-ae80-444b-a877-dee870385420",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/reports",
+      "description": "Lists saved reports.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "0145b4b4-1e5b-439b-9df3-623b8a86f2e4",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/reports",
+      "description": "Creates a report. Request body: { \"name\": \"Monthly Operations Report\", \"type\": \"pdf\", \"filters\": { \"project_id\": \"prj_01HZX9\" } }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "c5789c30-9f6a-409b-8a51-32604f8e24f2",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/reports/{report_id}",
+      "description": "Returns report details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "report_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: report_id"
+        }
+      ]
+    },
+    {
+      "id": "692fc629-89eb-4e4b-8293-780d0492e0cd",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/reports/{report_id}/run",
+      "description": "Runs a report.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "report_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: report_id"
+        }
+      ]
+    },
+    {
+      "id": "6fd66e04-9d1f-431a-a0f5-4a87ccf94b13",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "DELETE",
+      "path": "/reports/{report_id}",
+      "description": "Deletes a report. Rate-Limited Admin Endpoints",
+      "operationType": "delete",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "report_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: report_id"
+        }
+      ]
+    },
+    {
+      "id": "4ae87a53-ef84-4c54-b802-29ba1b5802d1",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/admin/health",
+      "description": "Returns service health.",
+      "operationType": "read",
+      "sensitive": true
+    },
+    {
+      "id": "2c1ca59a-de45-4cf4-8140-5ae9e44955f9",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/admin/metrics",
+      "description": "Returns internal metrics.",
+      "operationType": "read",
+      "sensitive": true
+    },
+    {
+      "id": "d2ab0c74-185b-4a9c-96f1-daef535edb0d",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "GET",
+      "path": "/admin/users",
+      "description": "Lists all users across organizations.",
+      "operationType": "read",
+      "sensitive": true
+    },
+    {
+      "id": "219f3b11-ceae-4377-8ba6-f8722a872b30",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/admin/organizations/{org_id}/suspend",
+      "description": "Suspends an organization. Request body: { \"reason\": \"Policy violation\" }",
+      "operationType": "write",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "7026609d-4c7d-426e-b7fc-bdc5624515b9",
+      "projectId": "fba8f944-1700-49e8-9075-14ebed686283",
+      "method": "POST",
+      "path": "/admin/organizations/{org_id}/unsuspend",
+      "description": "Restores a suspended organization. Object Schemas User { \"id\": \"usr_01HZX9\", \"name\": \"Maya Chen\", \"email\": \"maya@example.com\", \"role\": \"admin\", \"status\": \"active\", \"created_at\": \"2026-05-03T10:15:30Z\" } Project { \"id\": \"prj_01HZX9\", \"name\": \"Customer Portal Revamp\", \"description\": \"Modernize the customer portal UX\", \"status\": \"in_progress\", \"priority\": \"high\", \"owner_id\": \"usr_01HZX9\" } Task { \"id\": \"tsk_01HZX9\", \"title\": \"Design login flow\", \"description\": \"Create wireframes and review states\", \"status\": \"todo\", \"priority\": \"medium\", \"assignee_id\": \"usr_02ABCD\" } Standard HTTP Status Codes 200 OK 201 Created 204 No Content 400 Bad Request 401 Unauthorized 403 Forbidden 404 Not Found 409 Conflict 422 Validation Error 429 Too Many Requests 500 Internal Server Error Example End-to-End Flow 1. Register or log in. 2. Create an organization. 3. Add members. 4. Create a project. 5. Add tasks and files. 6. Review analytics and audit logs. 7. Export reports. 8. Connect webhooks and integrations. Example cURL curl -X GET https://api.atlasops.example.com/v1/projects \\ -H \"Authorization: Bearer <token>\" \\ -H \"Accept: application/json\" curl -X POST https://api.atlasops.example.com/v1/projects \\ -H \"Authorization: Bearer <token>\" \\ -H \"Content-Type: application/json\" \\ -d '{ \"name\": \"Customer Portal Revamp\", \"description\": \"Modernize the customer portal UX\", \"owner_id\": \"usr_01HZX9\", \"priority\": \"high\" }' curl -X POST https://api.atlasops.example.com/v1/projects/prj_01HZX9/tasks \\ -H \"Authorization: Bearer <token>\" \\ -H \"Content-Type: application/json\" \\ -d '{ \"title\": \"Design login flow\", \"description\": \"Create wireframes and review states\", \"assignee_id\": \"usr_02ABCD\", \"priority\": \"medium\", \"due_date\": \"2026-05-12\" }'",
+      "operationType": "write",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "ef1bb4f8-36fe-4cb3-8f0c-28f512f10ff2",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/auth/register",
+      "description": "Creates a new user account. Request body: { \"name\": \"Maya Chen\", \"email\": \"maya@example.com\", \"password\": \"StrongPass123!\", \"company_name\": \"Northwind Labs\" } Response: { \"success\": true, \"data\": { \"user_id\": \"usr_01HZX9\", \"email\": \"maya@example.com\", \"name\": \"Maya Chen\", \"company_id\": \"org_01HZX1\" } }",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "54adffa1-5624-4ba8-a1d1-a6c7c4baca5e",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/auth/login",
+      "description": "Authenticates a user and returns access tokens. Request body: { \"email\": \"maya@example.com\", \"password\": \"StrongPass123!\" } Response: { \"success\": true, \"data\": { \"access_token\": \"eyJhbGciOiJIUzI1NiIs...\", \"refresh_token\": \"rft_01HZX9...\", \"expires_in\": 3600 } }",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "f3b0afe6-c2bd-48ac-94b8-f0faef250908",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/auth/refresh",
+      "description": "Refreshes an access token. Request body: { \"refresh_token\": \"rft_01HZX9...\" }",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "857bf553-6085-4049-9add-4365fd37ac11",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/auth/logout",
+      "description": "Revokes the current session.",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "d055a029-7ddc-466e-9f1a-c3168adaa435",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/auth/me",
+      "description": "Returns the current authenticated user. Users Endpoints",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "261f1998-c604-4a1b-ba78-be2e2f18ac0e",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/users",
+      "description": "Lists users in the current organization. Query parameters: page, limit, search, role, status",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "9eb4fd25-ae3d-48f2-9e83-b4557c47c394",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/users/{user_id}",
+      "description": "Returns a single user.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "195a1619-8897-497a-8113-28b3693a02b0",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/users",
+      "description": "Creates a new user. Request body: { \"name\": \"Ari Patel\", \"email\": \"ari@example.com\", \"role\": \"manager\", \"department\": \"operations\" }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "4eb388a6-86c7-415f-8958-87f6cbdb260b",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PUT",
+      "path": "/users/{user_id}",
+      "description": "Updates a user.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "6bd6c689-caf2-4a25-8ef7-1084d6ed075a",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PATCH",
+      "path": "/users/{user_id}/status",
+      "description": "Updates user status. Request body: { \"status\": \"active\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "f67d1840-495a-45d8-8f73-629bf6c23549",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/users/{user_id}",
+      "description": "Deletes a user.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "b11f5fb1-e4f8-4eeb-878a-4e36fe23fc9a",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/users/{user_id}/invite",
+      "description": "Sends an invitation email.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "b6c46065-fd61-4382-a8bf-7c14339144e5",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/users/{user_id}/reset-password",
+      "description": "Sends a password reset link. Organizations Endpoints",
+      "operationType": "write",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "b47b6ded-0d89-4ff9-bdec-43fc5c850dbf",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/organizations",
+      "description": "Lists organizations visible to the current user.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "5a001bda-7b41-458a-8e16-74b3365fc73e",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/organizations/{org_id}",
+      "description": "Returns organization details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "2960d3d4-0004-43f5-ab0c-20fc3f9698eb",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/organizations",
+      "description": "Creates a new organization. Request body: { \"name\": \"Northwind Labs\", \"industry\": \"software\", \"plan\": \"enterprise\" }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "950ae6f6-8092-4a6b-99fe-af52cd2517f9",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PUT",
+      "path": "/organizations/{org_id}",
+      "description": "Updates organization details.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "bb6ec5e5-7fac-4960-ab65-a3190b3b416f",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/organizations/{org_id}",
+      "description": "Deletes an organization.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "c686338b-d4c1-4460-af2b-b5f42b16c1e6",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/organizations/{org_id}/members",
+      "description": "Lists organization members.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "10b3beb8-ceaa-4a7e-871e-580b63eeb24d",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/organizations/{org_id}/members",
+      "description": "Adds a member to the organization. Request body: { \"user_id\": \"usr_01HZX9\", \"role\": \"admin\" }",
+      "operationType": "write",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "54253983-9df5-438c-8c46-d623d4a058fb",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/organizations/{org_id}/members/{user_id}",
+      "description": "Removes a member from the organization. Projects Endpoints",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        },
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "32ef16ab-5c62-4e57-ad4b-81fef69e10f0",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/projects",
+      "description": "Lists projects. Query parameters: page, limit, search, status, owner_id",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "61fc1859-41bd-450e-b176-64a4d5afaffb",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/projects/{project_id}",
+      "description": "Returns project details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "8f088bf9-d0de-4da7-9706-ecd3be17bc84",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/projects",
+      "description": "Creates a project. Request body: { \"name\": \"Customer Portal Revamp\", \"description\": \"Modernize the customer portal UX\", \"owner_id\": \"usr_01HZX9\", \"priority\": \"high\" }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "880621cb-74b2-4be7-9203-3355f22fa4bf",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PUT",
+      "path": "/projects/{project_id}",
+      "description": "Updates a project.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "e3ea920e-3a44-4b93-bb6d-a2100cef978b",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PATCH",
+      "path": "/projects/{project_id}/status",
+      "description": "Updates project status. Request body: { \"status\": \"in_progress\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "1479e90c-e03c-4c25-bddd-7eb17a966cb2",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/projects/{project_id}",
+      "description": "Deletes a project.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "77ad0132-a8a6-4b9e-bf16-11deb58ff083",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/projects/{project_id}/members",
+      "description": "Lists project members.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "9bdf359d-8249-4691-b958-3ef6bd1f3152",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/projects/{project_id}/members",
+      "description": "Adds a project member. Request body: { \"user_id\": \"usr_02ABCD\", \"role\": \"editor\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "5605a92b-5f4b-45c5-b5e5-9b66359e2f6e",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/projects/{project_id}/members/{user_id}",
+      "description": "Removes a project member. Tasks Endpoints",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        },
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: user_id"
+        }
+      ]
+    },
+    {
+      "id": "7b23bfeb-4fb3-4a56-8193-cb9d863d90f3",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/projects/{project_id}/tasks",
+      "description": "Lists tasks for a project. Query parameters: page, limit, status, assignee_id, priority",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "d8da2a7c-e74e-41c8-8522-9716c3cbf628",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/tasks/{task_id}",
+      "description": "Returns task details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "1990b3de-9327-4ff0-b65b-cce4e0d45b01",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/projects/{project_id}/tasks",
+      "description": "Creates a task. Request body: { \"title\": \"Design login flow\", \"description\": \"Create wireframes and review states\", \"assignee_id\": \"usr_01HZX9\", \"priority\": \"medium\", \"due_date\": \"2026-05-12\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "f10076af-a394-4250-8c95-81b9f928974e",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PUT",
+      "path": "/tasks/{task_id}",
+      "description": "Updates a task.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "eae64993-33d9-4b40-86b5-a132b101c0ef",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PATCH",
+      "path": "/tasks/{task_id}/status",
+      "description": "Updates task status. Request body: { \"status\": \"done\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "97449c2d-3339-40d7-a8b0-9c063d1973a0",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PATCH",
+      "path": "/tasks/{task_id}/assignee",
+      "description": "Reassigns a task. Request body: { \"assignee_id\": \"usr_02ABCD\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "d7f13d4c-1985-4ab4-b011-2e0e36f43ff4",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/tasks/{task_id}",
+      "description": "Deletes a task.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "76f865df-9865-44de-ba27-14e32d729a59",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/tasks/{task_id}/comments",
+      "description": "Adds a comment to a task. Request body: { \"body\": \"This is ready for review.\" }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "0fce61da-be24-458a-929c-2f3f2b5ac62c",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/tasks/{task_id}/comments",
+      "description": "Lists task comments. Files Endpoints",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "task_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: task_id"
+        }
+      ]
+    },
+    {
+      "id": "321b1938-31e1-46ee-95b9-8c98076b0ac2",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/projects/{project_id}/files",
+      "description": "Lists uploaded files for a project.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "08a0f595-7fb4-4835-b1fd-f311dcb7d2c5",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/files/{file_id}",
+      "description": "Returns file metadata.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "file_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: file_id"
+        }
+      ]
+    },
+    {
+      "id": "2f7cbcf6-f5d6-45b5-a8c9-ba940d5f39ad",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/projects/{project_id}/files",
+      "description": "Uploads a new file. Request: multipart/form-data Fields: file, filename, category",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: project_id"
+        }
+      ]
+    },
+    {
+      "id": "bac13368-9d9c-4209-9a8d-5f829d647a66",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/files/{file_id}",
+      "description": "Deletes a file.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "file_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: file_id"
+        }
+      ]
+    },
+    {
+      "id": "3bc71689-679d-4794-b6b7-0bb7eb4f1986",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/files/{file_id}/rename",
+      "description": "Renames a file. Request body: { \"filename\": \"spec-v2.pdf\" } Billing Endpoints",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "file_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: file_id"
+        }
+      ]
+    },
+    {
+      "id": "9aac4472-9c76-4856-b7f3-26ab539d4098",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/billing/subscription",
+      "description": "Returns the current subscription.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "681e552f-f03b-4fff-89a1-5087a5bce03a",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/billing/invoices",
+      "description": "Lists invoices.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "c33f880d-5ae9-452b-b649-dbdfb1351747",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/billing/invoices/{invoice_id}",
+      "description": "Returns invoice details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "invoice_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: invoice_id"
+        }
+      ]
+    },
+    {
+      "id": "0081fe37-146e-44cc-80e5-346147ac7e2b",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/billing/subscription/upgrade",
+      "description": "Upgrades the plan. Request body: { \"plan\": \"enterprise\", \"billing_cycle\": \"annual\" }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "8688d80e-7e89-439a-a4d9-54399af01453",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/billing/subscription/downgrade",
+      "description": "Downgrades the plan.",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "23b53127-4cff-465d-9fd7-45a2d114c3de",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/billing/payment-methods",
+      "description": "Adds a payment method. Request body: { \"type\": \"card\", \"token\": \"tok_visa_123\" }",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "29332f88-cb3b-4df0-81d1-a01493f528fc",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/billing/payment-methods",
+      "description": "Lists payment methods.",
+      "operationType": "read",
+      "sensitive": true
+    },
+    {
+      "id": "4f285222-cbb6-4222-9812-87d3b904b60a",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/billing/payment-methods/{method_id}",
+      "description": "Removes a payment method. Notifications Endpoints",
+      "operationType": "delete",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "method_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: method_id"
+        }
+      ]
+    },
+    {
+      "id": "03e564b4-bed2-43a0-b119-05be8982ff87",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/notifications",
+      "description": "Lists notifications. Query parameters: page, limit, unread_only",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "395a8505-23a7-43c4-b735-a2c6ac3abf1d",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PATCH",
+      "path": "/notifications/{notification_id}/read",
+      "description": "Marks a notification as read.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "notification_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: notification_id"
+        }
+      ]
+    },
+    {
+      "id": "4c57c98d-66b1-46eb-bb13-919fed3e7c7c",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PATCH",
+      "path": "/notifications/read-all",
+      "description": "Marks all notifications as read.",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "0c1c159e-1a19-4845-befa-dad41c509352",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/notifications/test",
+      "description": "Sends a test notification to the current user. Audit Logs Endpoints",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "b14e20d8-6167-4462-8c83-41be50fb0dbe",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/audit-logs",
+      "description": "Lists audit log entries. Query parameters: page, limit, actor_id, action, resource_type, date_from, date_to",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "058ca8d9-64ae-4c1d-b904-98a6ea951d39",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/audit-logs/{log_id}",
+      "description": "Returns a single audit entry. Analytics Endpoints",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "log_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: log_id"
+        }
+      ]
+    },
+    {
+      "id": "12dfa785-4fcb-4816-a3bb-9eaca32644fe",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/analytics/overview",
+      "description": "Returns high-level platform metrics. Response: { \"success\": true, \"data\": { \"active_users\": 1842, \"projects_created_30d\": 126, \"tasks_completed_30d\": 948, \"revenue_mrr\": 48200 } }",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "e06c78bf-ce61-4a3d-b61b-cde5f4e4d973",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/analytics/users",
+      "description": "Returns user growth analytics.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "e68b30a2-699c-418d-b141-902873900335",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/analytics/projects",
+      "description": "Returns project analytics.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "0c32171a-18e8-4ed4-908b-e03826a19e90",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/analytics/billing",
+      "description": "Returns billing analytics. Search Endpoints",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "b46789fc-1f8c-4376-bc72-33e6a22d353b",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/search",
+      "description": "Searches across users, projects, tasks, files, and notifications. Query parameters: q, type, page, limit Webhooks Endpoints",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "46bcae74-6e7d-4387-bd6c-862c6c6ab589",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/webhooks",
+      "description": "Lists webhook subscriptions.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "d4766a7f-86b1-4272-a9d6-f6a350255940",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/webhooks",
+      "description": "Creates a webhook subscription. Request body: { \"name\": \"task-updates\", \"url\": \"https://example.com/webhooks/task-updates\", \"events\": [\"task.created\", \"task.updated\", \"task.deleted\"], \"secret\": \"whsec_123\" }",
+      "operationType": "write",
+      "sensitive": true
+    },
+    {
+      "id": "677e9f20-d177-46a1-84bb-8d5ea8c448f2",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/webhooks/{webhook_id}",
+      "description": "Returns webhook details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "webhook_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: webhook_id"
+        }
+      ]
+    },
+    {
+      "id": "a3aa6279-4647-45cb-94c8-15cd5bc7ee95",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "PUT",
+      "path": "/webhooks/{webhook_id}",
+      "description": "Updates a webhook subscription.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "webhook_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: webhook_id"
+        }
+      ]
+    },
+    {
+      "id": "ad6f6a70-5112-4b9f-9cf9-cf8d3b8e910c",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/webhooks/{webhook_id}",
+      "description": "Deletes a webhook subscription.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "webhook_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: webhook_id"
+        }
+      ]
+    },
+    {
+      "id": "4580026e-08d6-4b55-bf49-c366a5ce8c7b",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/webhooks/{webhook_id}/test",
+      "description": "Sends a test event. Webhook Events task.created task.updated task.deleted project.created project.updated user.invited invoice.paid invoice.failed Integrations Endpoints",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "webhook_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: webhook_id"
+        }
+      ]
+    },
+    {
+      "id": "d3631f6f-9c7a-4d86-8f73-821b886ecc87",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/integrations",
+      "description": "Lists connected integrations.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "23275d6f-1cb2-48c4-9c4b-edeeb0753a53",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/integrations",
+      "description": "Connects a new integration. Request body: { \"provider\": \"slack\", \"settings\": { \"workspace\": \"northwind\" } }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "a5b93fd7-5de9-457b-af2f-70239f3e0a4d",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/integrations/{integration_id}",
+      "description": "Disconnects an integration.",
+      "operationType": "delete",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "integration_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: integration_id"
+        }
+      ]
+    },
+    {
+      "id": "3eaced2d-8fe7-4520-9d90-06f8c6921b3a",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/integrations/{integration_id}/sync",
+      "description": "Triggers a manual sync. Reports Endpoints",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "integration_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: integration_id"
+        }
+      ]
+    },
+    {
+      "id": "cc38d4d5-a69d-4f58-a8bc-8179660d12d2",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/reports",
+      "description": "Lists saved reports.",
+      "operationType": "read",
+      "sensitive": false
+    },
+    {
+      "id": "6c49ac32-112a-43f5-b613-9af39128f71d",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/reports",
+      "description": "Creates a report. Request body: { \"name\": \"Monthly Operations Report\", \"type\": \"pdf\", \"filters\": { \"project_id\": \"prj_01HZX9\" } }",
+      "operationType": "write",
+      "sensitive": false
+    },
+    {
+      "id": "7687c07d-8182-4801-af90-62fcc657365b",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/reports/{report_id}",
+      "description": "Returns report details.",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "report_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: report_id"
+        }
+      ]
+    },
+    {
+      "id": "ab6558bc-2af6-4e8a-874e-ce486cb23a7d",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/reports/{report_id}/run",
+      "description": "Runs a report.",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "report_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: report_id"
+        }
+      ]
+    },
+    {
+      "id": "1d89aa7a-b3c3-4662-9f90-ca3ec633adbd",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "DELETE",
+      "path": "/reports/{report_id}",
+      "description": "Deletes a report. Rate-Limited Admin Endpoints",
+      "operationType": "delete",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "report_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: report_id"
+        }
+      ]
+    },
+    {
+      "id": "39e9a4c7-9aaa-4315-a7b9-7b05ba5a1a21",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/admin/health",
+      "description": "Returns service health.",
+      "operationType": "read",
+      "sensitive": true
+    },
+    {
+      "id": "aa7f6264-e5b7-4d01-b62e-94078624e843",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/admin/metrics",
+      "description": "Returns internal metrics.",
+      "operationType": "read",
+      "sensitive": true
+    },
+    {
+      "id": "183bd00a-1b9d-4404-99df-d0124009eb6d",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "GET",
+      "path": "/admin/users",
+      "description": "Lists all users across organizations.",
+      "operationType": "read",
+      "sensitive": true
+    },
+    {
+      "id": "f1244b8f-24ba-4da4-9904-3de2a5e581a7",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/admin/organizations/{org_id}/suspend",
+      "description": "Suspends an organization. Request body: { \"reason\": \"Policy violation\" }",
+      "operationType": "write",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
+    },
+    {
+      "id": "03d476d4-e9be-46f9-b605-74411c35e48c",
+      "projectId": "13cde6e3-d28d-4451-8fa9-8e91fe49c218",
+      "method": "POST",
+      "path": "/admin/organizations/{org_id}/unsuspend",
+      "description": "Restores a suspended organization. Object Schemas User { \"id\": \"usr_01HZX9\", \"name\": \"Maya Chen\", \"email\": \"maya@example.com\", \"role\": \"admin\", \"status\": \"active\", \"created_at\": \"2026-05-03T10:15:30Z\" } Project { \"id\": \"prj_01HZX9\", \"name\": \"Customer Portal Revamp\", \"description\": \"Modernize the customer portal UX\", \"status\": \"in_progress\", \"priority\": \"high\", \"owner_id\": \"usr_01HZX9\" } Task { \"id\": \"tsk_01HZX9\", \"title\": \"Design login flow\", \"description\": \"Create wireframes and review states\", \"status\": \"todo\", \"priority\": \"medium\", \"assignee_id\": \"usr_02ABCD\" } Standard HTTP Status Codes 200 OK 201 Created 204 No Content 400 Bad Request 401 Unauthorized 403 Forbidden 404 Not Found 409 Conflict 422 Validation Error 429 Too Many Requests 500 Internal Server Error Example End-to-End Flow 1. Register or log in. 2. Create an organization. 3. Add members. 4. Create a project. 5. Add tasks and files. 6. Review analytics and audit logs. 7. Export reports. 8. Connect webhooks and integrations. Example cURL curl -X GET https://api.atlasops.example.com/v1/projects \\ -H \"Authorization: Bearer <token>\" \\ -H \"Accept: application/json\" curl -X POST https://api.atlasops.example.com/v1/projects \\ -H \"Authorization: Bearer <token>\" \\ -H \"Content-Type: application/json\" \\ -d '{ \"name\": \"Customer Portal Revamp\", \"description\": \"Modernize the customer portal UX\", \"owner_id\": \"usr_01HZX9\", \"priority\": \"high\" }' curl -X POST https://api.atlasops.example.com/v1/projects/prj_01HZX9/tasks \\ -H \"Authorization: Bearer <token>\" \\ -H \"Content-Type: application/json\" \\ -d '{ \"title\": \"Design login flow\", \"description\": \"Create wireframes and review states\", \"assignee_id\": \"usr_02ABCD\", \"priority\": \"medium\", \"due_date\": \"2026-05-12\" }'",
+      "operationType": "write",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "org_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: org_id"
+        }
+      ]
     }
   ]
 }

@@ -63,13 +63,21 @@ export interface PolicyRule {
 
 export interface RiskPolicy {
   projectId: string;
-  tools: RiskAssessment[];
+  rules: RiskRule[];
+  defaultApprovalRequired: boolean;
   createdAt: string;
   updatedAt: string;
 }
 
 export interface RiskAssessment {
   toolName: string;
+  riskLevel: RiskLevel;
+  approvalRequired: boolean;
+  reason: string;
+}
+
+export interface RiskRule {
+  condition: string;
   riskLevel: RiskLevel;
   approvalRequired: boolean;
   reason: string;

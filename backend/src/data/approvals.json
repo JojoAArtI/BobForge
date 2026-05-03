@@ -1,3 +1,28 @@
 {
-  "approvals": []
+  "approvals": [
+    {
+      "id": "14e43183-872f-4bab-9804-9a7cc9a03c83",
+      "projectId": "d8a1239a-6558-4163-b657-19e7c9654313",
+      "toolName": "create_hr_tickets",
+      "parameters": {
+        "employee_id": "E102",
+        "id": "E102"
+      },
+      "requestedBy": "agent",
+      "requestedAt": "2026-05-03T10:11:03.496Z",
+      "status": "pending"
+    },
+    {
+      "id": "48b69d30-0f7e-44a5-9027-6bcab7a0079c",
+      "projectId": "d8a1239a-6558-4163-b657-19e7c9654313",
+      "toolName": "create_hr_tickets",
+      "parameters": {
+        "employee_id": "E102",
+        "id": "E102"
+      },
+      "requestedBy": "agent",
+      "requestedAt": "2026-05-03T10:11:18.548Z",
+      "status": "pending"
+    }
+  ]
 }

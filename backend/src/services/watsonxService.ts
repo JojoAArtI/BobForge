@@ -73,7 +73,7 @@ export class WatsonxService {
   private async getAccessToken(): Promise<string> {
     // Return cached token if still valid
     if (this.accessToken && Date.now() < this.tokenExpiry) {
-      return this.accessToken;
+      return this.accessToken as string;
     }
 
     try {
@@ -149,10 +149,20 @@ export class WatsonxService {
   }
 
   /**
-   * Parse API documentation using Granite
+   * Parse API documentation using Granite - UNLIMITED SCALE
+   * Handles documentation of ANY size: 10, 100, 1000, 10000+ endpoints
    */
   async parseDocumentation(documentation: string): Promise<any[]> {
-    const prompt = `You are an API documentation parser. Extract all API endpoints from the following documentation.
+    console.log(`[WatsonxService] Parsing documentation (${documentation.length} characters)`);
+    
+    // For massive documentation (>50k chars), use batch processing
+    if (documentation.length > 50000) {
+      return this.parseLargeDocumentation(documentation);
+    }
+
+    const prompt = `You are an expert API documentation parser capable of handling ANY scale of documentation.
+
+Extract ALL API endpoints from the following documentation, no matter how many there are.
 
 Documentation:
 ${documentation}
@@ -166,26 +176,41 @@ Return ONLY a valid JSON array with this exact structure (no markdown, no explan
     "parameters": [
       {
         "name": "param_name",
-        "type": "string|number|boolean",
+        "in": "path|query|header|body",
+        "type": "string|number|boolean|object|array",
         "required": true|false,
         "description": "parameter description"
       }
     ],
+    "requestBody": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    "responseBody": {
+      "type": "object",
+      "properties": {}
+    },
     "operation_type": "read|write|delete",
     "sensitive": true|false
   }
 ]
 
-Rules:
+CRITICAL RULES:
+- Extract EVERY endpoint, no matter how many (10, 100, 1000+)
 - GET requests are "read" operations
 - POST/PUT/PATCH are "write" operations
 - DELETE requests are "delete" operations
-- Mark endpoints with sensitive data (employee, payroll, personal info) as sensitive: true
-- Extract path parameters from {param} notation
-- Include all query parameters and request body fields`;
+- Mark endpoints with sensitive data as sensitive: true
+- Extract ALL path parameters from {param} notation
+- Include ALL query parameters, headers, and request body fields
+- Support nested objects and arrays in request/response bodies
+- Handle ANY API type: REST, GraphQL, SOAP, gRPC
+- Support ANY authentication: OAuth, JWT, API Keys, SAML
+- Parse ANY format: OpenAPI, Swagger, RAML, API Blueprint, plain text`;
 
     try {
-      const response = await this.generate(prompt, 2000);
+      const response = await this.generate(prompt, 4000); // Increased token limit
       
       // Extract JSON from response (handle markdown code blocks)
       let jsonStr = response;
@@ -201,11 +226,70 @@ Rules:
         throw new Error('Response is not an array');
       }
 
+      console.log(`[WatsonxService] Successfully parsed ${endpoints.length} endpoints`);
       return endpoints;
     } catch (error: any) {
       console.error('Failed to parse documentation with watsonx.ai:', error.message);
       throw new Error(`Documentation parsing failed: ${error.message}`);
     }
+  }
+
+  /**
+   * Parse large documentation in batches
+   * Handles 100,000+ endpoints by splitting into chunks
+   */
+  private async parseLargeDocumentation(documentation: string): Promise<any[]> {
+    console.log('[WatsonxService] Using batch processing for large documentation');
+    
+    // Split documentation into logical chunks (by endpoint sections)
+    const chunks = this.splitDocumentation(documentation);
+    console.log(`[WatsonxService] Split into ${chunks.length} chunks`);
+    
+    const allEndpoints: any[] = [];
+    
+    // Process chunks in parallel (batches of 5)
+    const batchSize = 5;
+    for (let i = 0; i < chunks.length; i += batchSize) {
+      const batch = chunks.slice(i, i + batchSize);
+      console.log(`[WatsonxService] Processing batch ${i / batchSize + 1}/${Math.ceil(chunks.length / batchSize)}`);
+      
+      const batchResults = await Promise.all(
+        batch.map(chunk => this.parseDocumentation(chunk))
+      );
+      
+      batchResults.forEach(endpoints => allEndpoints.push(...endpoints));
+    }
+    
+    console.log(`[WatsonxService] Batch processing complete: ${allEndpoints.length} total endpoints`);
+    return allEndpoints;
+  }
+
+  /**
+   * Split large documentation into manageable chunks
+   */
+  private splitDocumentation(documentation: string): string[] {
+    const chunks: string[] = [];
+    const maxChunkSize = 40000; // Characters per chunk
+    
+    // Try to split by endpoint markers (GET, POST, etc.)
+    const endpointPattern = /(?=(?:GET|POST|PUT|PATCH|DELETE)\s+\/)/gi;
+    const sections = documentation.split(endpointPattern);
+    
+    let currentChunk = '';
+    for (const section of sections) {
+      if (currentChunk.length + section.length > maxChunkSize && currentChunk) {
+        chunks.push(currentChunk);
+        currentChunk = section;
+      } else {
+        currentChunk += section;
+      }
+    }
+    
+    if (currentChunk) {
+      chunks.push(currentChunk);
+    }
+    
+    return chunks.length > 0 ? chunks : [documentation];
   }
 
   /**

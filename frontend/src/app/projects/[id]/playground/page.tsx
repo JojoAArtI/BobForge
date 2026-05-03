@@ -1,10 +1,11 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import Link from 'next/link';
 import { api } from '@/lib/api';
-import { Project, AgentResponse, Approval } from '@/types';
+import { AgentResponse, Approval, Project } from '@/types';
+import { ActionLink, EmptyState, Panel, Pill, SectionHeader } from '@/components/site';
 
 interface Message {
   id: string;
@@ -27,32 +28,33 @@ export default function PlaygroundPage() {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [projectRes, approvalsRes] = await Promise.all([
+          api.projects.get(projectId),
+          api.approvals.list(projectId, 'pending'),
+        ]);
+
+        setProject(projectRes.data.data);
+        setApprovals(approvalsRes.data.data || []);
+        setMessages([
+          {
+            id: '1',
+            type: 'agent',
+            content:
+              'Hello. I can help you exercise the generated MCP tools. Try asking for leave balance, payroll information, or an HR ticket action.',
+            timestamp: new Date().toISOString(),
+          },
+        ]);
+      } catch (err: any) {
+        setError(err.response?.data?.message || 'Failed to load data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
     loadData();
   }, [projectId]);
-
-  const loadData = async () => {
-    try {
-      const [projectRes, approvalsRes] = await Promise.all([
-        api.projects.get(projectId),
-        api.approvals.list(projectId, 'pending'),
-      ]);
-
-      setProject(projectRes.data.data);
-      setApprovals(approvalsRes.data.data || []);
-      
-      // Add welcome message
-      setMessages([{
-        id: '1',
-        type: 'agent',
-        content: 'Hello! I\'m your AI assistant. I can help you interact with the HR API. Try asking me something like "How many leaves does employee E102 have?" or "Get payroll for E101".',
-        timestamp: new Date().toISOString(),
-      }]);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to load data');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleSend = async () => {
     if (!input.trim() || sending) return;
@@ -64,7 +66,7 @@ export default function PlaygroundPage() {
       timestamp: new Date().toISOString(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setSending(true);
     setError('');
@@ -81,22 +83,23 @@ export default function PlaygroundPage() {
         response: agentResponse,
       };
 
-      setMessages(prev => [...prev, agentMessage]);
+      setMessages((prev) => [...prev, agentMessage]);
 
-      // Reload approvals if one was created
       if (agentResponse.approvalRequired) {
         const approvalsRes = await api.approvals.list(projectId, 'pending');
         setApprovals(approvalsRes.data.data || []);
       }
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to send message');
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        type: 'agent',
-        content: 'Sorry, I encountered an error processing your request. Please try again.',
-        timestamp: new Date().toISOString(),
-      };
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          type: 'agent',
+          content: 'Sorry, the request could not be processed right now.',
+          timestamp: new Date().toISOString(),
+        },
+      ]);
     } finally {
       setSending(false);
     }
@@ -105,19 +108,17 @@ export default function PlaygroundPage() {
   const handleApprove = async (approvalId: string) => {
     try {
       await api.approvals.approve(approvalId, 'user@example.com', 'Approved from playground');
-      
-      // Reload approvals
       const approvalsRes = await api.approvals.list(projectId, 'pending');
       setApprovals(approvalsRes.data.data || []);
-
-      // Add success message
-      const successMessage: Message = {
-        id: Date.now().toString(),
-        type: 'agent',
-        content: '✅ Request approved! The operation has been executed.',
-        timestamp: new Date().toISOString(),
-      };
-      setMessages(prev => [...prev, successMessage]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          type: 'agent',
+          content: 'Approval accepted. The operation has been executed.',
+          timestamp: new Date().toISOString(),
+        },
+      ]);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to approve');
     }
@@ -126,45 +127,33 @@ export default function PlaygroundPage() {
   const handleReject = async (approvalId: string) => {
     try {
       await api.approvals.reject(approvalId, 'user@example.com', 'Rejected from playground');
-      
-      // Reload approvals
       const approvalsRes = await api.approvals.list(projectId, 'pending');
       setApprovals(approvalsRes.data.data || []);
-
-      // Add rejection message
-      const rejectMessage: Message = {
-        id: Date.now().toString(),
-        type: 'agent',
-        content: '❌ Request rejected. The operation was not executed.',
-        timestamp: new Date().toISOString(),
-      };
-      setMessages(prev => [...prev, rejectMessage]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          type: 'agent',
+          content: 'Request rejected. The operation was not executed.',
+          timestamp: new Date().toISOString(),
+        },
+      ]);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to reject');
     }
   };
 
-  const getRiskColor = (level?: string) => {
-    switch (level?.toUpperCase()) {
-      case 'LOW':
-        return 'text-green-600';
-      case 'MEDIUM':
-        return 'text-yellow-600';
-      case 'HIGH':
-        return 'text-orange-600';
-      case 'CRITICAL':
-        return 'text-red-600';
-      default:
-        return 'text-gray-600';
-    }
-  };
-
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-          <p className="mt-4 text-gray-600">Loading playground...</p>
+      <div className="min-h-[100dvh]">
+        <div className="site-shell py-8">
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="h-[72vh] rounded-[28px] border border-white/10 bg-white/[0.04]" />
+            <div className="space-y-4">
+              <div className="h-40 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+              <div className="h-40 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -172,239 +161,193 @@ export default function PlaygroundPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4">❌</div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Project Not Found</h2>
-          <Link href="/" className="btn btn-primary mt-4">
-            Go Home
-          </Link>
+      <div className="min-h-[100dvh]">
+        <div className="site-shell flex min-h-[100dvh] items-center justify-center">
+          <EmptyState title="Project not found" description="The playground could not load the requested project." action={<ActionLink href="/" accent>Go home</ActionLink>} />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
+    <div className="min-h-[100dvh]">
+      <header className="border-b border-white/10 bg-[rgba(7,7,7,0.84)] backdrop-blur-xl">
+        <div className="site-shell">
+          <div className="flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-4">
-              <Link href={`/projects/${projectId}/export`} className="text-gray-600 hover:text-gray-900">
-                ← Back
+              <Link href={`/projects/${projectId}/export`} className="btn btn-secondary px-4 py-2 text-xs uppercase tracking-[0.2em]">
+                Back
               </Link>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">{project.name}</h1>
-                <p className="mt-1 text-sm text-gray-600">Agent Playground</p>
+                <p className="section-kicker">Playground</p>
+                <h1 className="mt-2 text-3xl font-semibold tracking-tighter text-[color:var(--text)]">{project.name}</h1>
+                <p className="mt-2 text-sm text-white/55">Agent chat and approval workflow</p>
               </div>
             </div>
-            {approvals.length > 0 && (
-              <span className="badge bg-orange-100 text-orange-800">
-                {approvals.length} Pending Approval{approvals.length !== 1 ? 's' : ''}
-              </span>
-            )}
+            {approvals.length > 0 ? <Pill tone="accent">{approvals.length} pending approvals</Pill> : <Pill tone="success">No pending approvals</Pill>}
           </div>
         </div>
       </header>
 
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Chat Area */}
-          <div className="lg:col-span-2">
-            <div className="card h-[calc(100vh-250px)] flex flex-col">
-              {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <main className="site-shell py-8 md:py-12">
+        <div className="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+          <Panel className="flex min-h-[72vh] flex-col overflow-hidden p-0">
+            <div className="border-b border-white/10 px-6 py-4">
+              <SectionHeader
+                kicker="Chat"
+                title="Ask the agent anything."
+                description="Use natural language to exercise the generated MCP tools and watch approval gates appear when needed."
+              />
+            </div>
+
+            <div className="flex-1 overflow-y-auto px-6 py-5">
+              <div className="space-y-4">
                 {messages.map((message) => (
-                  <div
-                    key={message.id}
-                    className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                  >
+                  <div key={message.id} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div
-                      className={`max-w-[80%] rounded-lg p-4 ${
+                      className={`max-w-[82%] rounded-[24px] border px-4 py-4 ${
                         message.type === 'user'
-                          ? 'bg-primary text-white'
-                          : 'bg-gray-100 text-gray-900'
+                          ? 'border-[color:var(--accent-border)] bg-[color:var(--accent-soft)]'
+                          : 'border-white/10 bg-white/[0.05]'
                       }`}
                     >
-                      <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                      
-                      {/* Agent Response Details */}
-                      {message.response && message.type === 'agent' && (
-                        <div className="mt-3 pt-3 border-t border-gray-300 space-y-2">
-                          {message.response.toolUsed && (
-                            <div className="text-xs">
-                              <span className="font-medium">Tool:</span>{' '}
-                              <code className="bg-gray-200 px-1 rounded">{message.response.toolUsed}</code>
+                      <p className="whitespace-pre-wrap text-sm leading-relaxed text-[color:var(--text)]">{message.content}</p>
+                      {message.response ? (
+                        <div className="mt-4 space-y-2 border-t border-white/10 pt-4 text-xs text-white/55">
+                          {message.response.toolUsed ? (
+                            <div>
+                              <span className="text-white/35">Tool:</span> <code className="font-mono text-white/75">{message.response.toolUsed}</code>
                             </div>
-                          )}
-                          {message.response.riskLevel && (
-                            <div className="text-xs">
-                              <span className="font-medium">Risk:</span>{' '}
-                              <span className={getRiskColor(message.response.riskLevel)}>
-                                {message.response.riskLevel}
-                              </span>
+                          ) : null}
+                          {message.response.riskLevel ? (
+                            <div>
+                              <span className="text-white/35">Risk:</span> <span className="text-white/75">{message.response.riskLevel}</span>
                             </div>
-                          )}
-                          {message.response.result && (
-                            <div className="text-xs">
-                              <span className="font-medium">Result:</span>
-                              <pre className="mt-1 bg-gray-200 p-2 rounded text-xs overflow-x-auto">
+                          ) : null}
+                          {message.response.result ? (
+                            <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/30 p-3">
+                              <pre className="overflow-x-auto font-mono text-[11px] leading-5 text-white/72">
                                 {JSON.stringify(message.response.result, null, 2)}
                               </pre>
                             </div>
-                          )}
+                          ) : null}
                         </div>
-                      )}
-                      
-                      <p className="text-xs opacity-70 mt-2">
+                      ) : null}
+                      <p className="mt-3 text-[11px] uppercase tracking-[0.22em] text-white/30">
                         {new Date(message.timestamp).toLocaleTimeString()}
                       </p>
                     </div>
                   </div>
                 ))}
-                
-                {sending && (
+
+                {sending ? (
                   <div className="flex justify-start">
-                    <div className="bg-gray-100 rounded-lg p-4">
-                      <div className="flex items-center gap-2">
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
-                        <span className="text-sm text-gray-600">Thinking...</span>
-                      </div>
-                    </div>
+                    <div className="rounded-[24px] border border-white/10 bg-white/[0.05] px-4 py-4 text-sm text-white/55">Thinking...</div>
                   </div>
-                )}
-              </div>
-
-              {/* Error Message */}
-              {error && (
-                <div className="px-4 py-2 bg-red-50 border-t border-red-200">
-                  <p className="text-sm text-red-700">{error}</p>
-                </div>
-              )}
-
-              {/* Input */}
-              <div className="border-t border-gray-200 p-4">
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                    placeholder="Ask me anything about the HR API..."
-                    className="input flex-1"
-                    disabled={sending}
-                  />
-                  <button
-                    onClick={handleSend}
-                    disabled={sending || !input.trim()}
-                    className="btn btn-primary"
-                  >
-                    Send
-                  </button>
-                </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  Try: "How many leaves does E102 have?" or "Get payroll for E101"
-                </p>
+                ) : null}
               </div>
             </div>
-          </div>
 
-          {/* Sidebar */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Pending Approvals */}
-            <div className="card">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                🔐 Pending Approvals
-              </h3>
-              
+            {error ? <div className="border-t border-red-400/20 bg-red-400/10 px-6 py-3 text-sm text-red-200">{error}</div> : null}
+
+            <div className="border-t border-white/10 px-6 py-4">
+              <div className="flex gap-3">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                  placeholder="Ask about the API..."
+                  className="input flex-1"
+                  disabled={sending}
+                />
+                <button onClick={handleSend} disabled={sending || !input.trim()} className="btn btn-primary">
+                  Send
+                </button>
+              </div>
+              <p className="mt-3 text-xs uppercase tracking-[0.22em] text-white/30">
+                Try: “How many leaves does E102 have?” or “Get payroll for E101”
+              </p>
+            </div>
+          </Panel>
+
+          <div className="space-y-6">
+            <Panel className="p-6">
+              <p className="section-kicker">Approvals</p>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--text)]">Pending approvals</h2>
+
               {approvals.length === 0 ? (
-                <div className="text-center py-8 text-gray-500">
-                  <div className="text-3xl mb-2">✅</div>
-                  <p className="text-sm">No pending approvals</p>
+                <div className="mt-5">
+                  <EmptyState title="No pending approvals" description="High-risk operations will appear here when the agent requests them." />
                 </div>
               ) : (
-                <div className="space-y-3">
+                <div className="mt-5 space-y-3">
                   {approvals.map((approval) => (
-                    <div
-                      key={approval.id}
-                      className="border border-orange-200 rounded-lg p-3 bg-orange-50"
-                    >
-                      <div className="flex items-start justify-between mb-2">
+                    <div key={approval.id} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
+                      <div className="flex items-start justify-between gap-4">
                         <div>
-                          <p className="font-medium text-sm text-gray-900">{approval.toolName}</p>
-                          <p className="text-xs text-gray-600 mt-1">
+                          <p className="text-sm font-medium text-[color:var(--text)]">{approval.toolName}</p>
+                          <p className="mt-1 text-xs uppercase tracking-[0.22em] text-white/30">
                             {new Date(approval.requestedAt).toLocaleString()}
                           </p>
                         </div>
+                        <Pill tone="accent">Review</Pill>
                       </div>
-                      
-                      {approval.parameters && (
-                        <div className="mt-2 text-xs">
-                          <p className="font-medium text-gray-700">Parameters:</p>
-                          <pre className="mt-1 bg-white p-2 rounded text-xs overflow-x-auto">
+
+                      {approval.parameters ? (
+                        <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-black/25 p-3">
+                          <pre className="overflow-x-auto font-mono text-[11px] leading-5 text-white/72">
                             {JSON.stringify(approval.parameters, null, 2)}
                           </pre>
                         </div>
-                      )}
-                      
-                      <div className="flex gap-2 mt-3">
-                        <button
-                          onClick={() => handleApprove(approval.id)}
-                          className="flex-1 px-3 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700"
-                        >
-                          ✓ Approve
+                      ) : null}
+
+                      <div className="mt-4 flex gap-3">
+                        <button onClick={() => handleApprove(approval.id)} className="btn btn-primary flex-1 text-xs uppercase tracking-[0.18em]">
+                          Approve
                         </button>
-                        <button
-                          onClick={() => handleReject(approval.id)}
-                          className="flex-1 px-3 py-1 bg-red-600 text-white rounded text-xs hover:bg-red-700"
-                        >
-                          ✗ Reject
+                        <button onClick={() => handleReject(approval.id)} className="btn btn-secondary flex-1 text-xs uppercase tracking-[0.18em]">
+                          Reject
                         </button>
                       </div>
                     </div>
                   ))}
                 </div>
               )}
-            </div>
+            </Panel>
 
-            {/* Sample Queries */}
-            <div className="card">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                💡 Sample Queries
-              </h3>
-              <div className="space-y-2">
+            <Panel className="p-6">
+              <p className="section-kicker">Sample queries</p>
+              <div className="mt-4 space-y-2">
                 {[
                   'How many leaves does employee E102 have?',
                   'Get payroll information for E101',
                   'Check leave balance for E103',
                   'Create an HR ticket for E102',
-                ].map((query, index) => (
+                ].map((query) => (
                   <button
-                    key={index}
+                    key={query}
                     onClick={() => setInput(query)}
-                    className="w-full text-left px-3 py-2 text-sm bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
+                    className="w-full rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-left text-sm text-white/68 transition hover:bg-white/[0.06]"
                   >
                     {query}
                   </button>
                 ))}
               </div>
-            </div>
+            </Panel>
 
-            {/* Info */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h4 className="text-sm font-semibold text-blue-900 mb-2">ℹ️ How it works</h4>
-              <ul className="text-xs text-blue-800 space-y-1">
-                <li>• Ask questions in natural language</li>
-                <li>• AI selects the right tool</li>
-                <li>• High-risk operations require approval</li>
-                <li>• Results are shown in real-time</li>
-              </ul>
-            </div>
+            <Panel className="p-6">
+              <p className="section-kicker">How it works</p>
+              <div className="mt-4 space-y-3 text-sm leading-relaxed text-white/58">
+                <p>Ask questions in natural language.</p>
+                <p>The agent selects the correct tool.</p>
+                <p>High-risk operations require approval.</p>
+                <p>Results appear in the chat immediately.</p>
+              </div>
+            </Panel>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
