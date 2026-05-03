@@ -4529,6 +4529,1597 @@
       "riskLevel": "CRITICAL",
       "approvalRequired": true,
       "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
+    },
+    {
+      "id": "dd762c45-0046-4c41-ba04-c12241349284",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "30b00d3f-73c1-4e3e-bb04-681f6366d836",
+      "name": "create_auth_register",
+      "description": "Creates a new user account. Request body: { \"name\": \"Maya Chen\", \"email\": \"maya@example.com\", \"password\": \"StrongPass123!\", \"company_name\": \"Northwind Labs\" } Response: { \"success\": true, \"data\": { \"user_id\": \"usr_01HZX9\", \"email\": \"maya@example.com\", \"name\": \"Maya Chen\", \"company_id\": \"org_01HZX1\" } }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
+    },
+    {
+      "id": "041fd925-e09d-4bc6-86cd-6e91aa4ccd45",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "42b701c6-e24c-4964-a074-8b49e32860ac",
+      "name": "create_auth_login",
+      "description": "Authenticates a user and returns access tokens. Request body: { \"email\": \"maya@example.com\", \"password\": \"StrongPass123!\" } Response: { \"success\": true, \"data\": { \"access_token\": \"eyJhbGciOiJIUzI1NiIs...\", \"refresh_token\": \"rft_01HZX9...\", \"expires_in\": 3600 } }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
+    },
+    {
+      "id": "2816d7cd-1ffe-45f2-b4fc-8debf0e5031c",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "9300a32c-2d70-46cf-876e-dde4a3f435de",
+      "name": "create_auth_refresh",
+      "description": "Refreshes an access token. Request body: { \"refresh_token\": \"rft_01HZX9...\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
+    },
+    {
+      "id": "99ecbd7f-635c-435f-bddd-4f465144c937",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "6c6044a5-cf54-40cf-b010-fc2128ff217e",
+      "name": "create_auth_logout",
+      "description": "Revokes the current session.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "1b8227d6-43e8-4400-a8bd-8b1f730e7488",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "802ac055-4833-430a-a8c8-aa79fdc76123",
+      "name": "get_auth_me",
+      "description": "Returns the current authenticated user. Users Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "f76683ec-b700-4e3f-ac8e-0cfb4d6353d7",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "12ce7ed8-6103-495e-bbe6-4d1d752bd037",
+      "name": "get_users",
+      "description": "Lists users in the current organization. Query parameters: page, limit, search, role, status",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "90002465-4489-4c1b-8f51-b6c0855b0c67",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "c3d9f1bf-7c03-47fa-a04f-71151eb07e70",
+      "name": "get_users",
+      "description": "Returns a single user.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "Path parameter: user_id"
+          }
+        },
+        "required": [
+          "user_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "56e984a4-d271-4492-b3cf-ccb8a6e86e32",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "3a792b52-5788-49cb-8bfd-ddd0e8ec8a1b",
+      "name": "create_users",
+      "description": "Creates a new user. Request body: { \"name\": \"Ari Patel\", \"email\": \"ari@example.com\", \"role\": \"manager\", \"department\": \"operations\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "ac58e107-6e38-474a-af3d-63617e7e67cf",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "2cc1159a-6840-42ce-9830-a93d8fbb312b",
+      "name": "update_users",
+      "description": "Updates a user.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "Path parameter: user_id"
+          }
+        },
+        "required": [
+          "user_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "aad32a66-f150-4bca-a1f7-6a0b7d119fbd",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "749114a0-0062-4434-bab7-6d8a5ecb7373",
+      "name": "modify_users_status",
+      "description": "Updates user status. Request body: { \"status\": \"active\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "Path parameter: user_id"
+          }
+        },
+        "required": [
+          "user_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "6a0fc71e-22e8-40f5-b6ee-4ad647509ad1",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "9cd74765-9b76-4c6d-844a-99712fd6853c",
+      "name": "delete_users",
+      "description": "Deletes a user.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "Path parameter: user_id"
+          }
+        },
+        "required": [
+          "user_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "64cebc1b-6711-4a88-83ec-f60e0125f9c7",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "2bffd704-d07d-4842-9743-648c5e4f60c8",
+      "name": "create_users_invite",
+      "description": "Sends an invitation email.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "Path parameter: user_id"
+          }
+        },
+        "required": [
+          "user_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "5e2a72dc-75a5-4ba1-8015-51ff34617d7e",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "5a529877-78b2-40b9-967f-c8e6fa79e3f4",
+      "name": "create_users_reset_password",
+      "description": "Sends a password reset link. Organizations Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "Path parameter: user_id"
+          }
+        },
+        "required": [
+          "user_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
+    },
+    {
+      "id": "61627e95-19e3-4937-82ab-f38b8a1b1386",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "7555564f-0750-4665-a35b-0d99a4f7e0f2",
+      "name": "get_organizations",
+      "description": "Lists organizations visible to the current user.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "1d6ab5cf-ea02-44ed-adc7-066b98d3c084",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "46a35ab3-3733-4e53-ac8d-cf8adfe4997f",
+      "name": "get_organizations",
+      "description": "Returns organization details.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org_id": {
+            "type": "string",
+            "description": "Path parameter: org_id"
+          }
+        },
+        "required": [
+          "org_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "7a61d2b2-ad18-4910-80d9-54ff1d36ca36",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "cb11bca3-8493-44af-9668-a2f44132fb09",
+      "name": "create_organizations",
+      "description": "Creates a new organization. Request body: { \"name\": \"Northwind Labs\", \"industry\": \"software\", \"plan\": \"enterprise\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "e3264c72-cced-40b8-896e-c49a5aef8e97",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "b94b4c3a-adf7-410c-bfce-5948d385c747",
+      "name": "update_organizations",
+      "description": "Updates organization details.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org_id": {
+            "type": "string",
+            "description": "Path parameter: org_id"
+          }
+        },
+        "required": [
+          "org_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "5bff57d9-7a40-4729-82a1-8001ac0cebf5",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "304b96a0-ad8c-4a82-bfb4-cc28f932b22c",
+      "name": "delete_organizations",
+      "description": "Deletes an organization.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org_id": {
+            "type": "string",
+            "description": "Path parameter: org_id"
+          }
+        },
+        "required": [
+          "org_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "de15fd07-8ff4-4afd-bfbb-3187d11b9316",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "f42dcb1f-f5bf-486f-a40e-9cf1d3e3a241",
+      "name": "get_organizations_members",
+      "description": "Lists organization members.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org_id": {
+            "type": "string",
+            "description": "Path parameter: org_id"
+          }
+        },
+        "required": [
+          "org_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "c01b2e52-a80d-4a2a-82b6-0fa504ff194e",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "5ce48a9c-583f-4743-b17b-a2053e856c8b",
+      "name": "create_organizations_members",
+      "description": "Adds a member to the organization. Request body: { \"user_id\": \"usr_01HZX9\", \"role\": \"admin\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org_id": {
+            "type": "string",
+            "description": "Path parameter: org_id"
+          }
+        },
+        "required": [
+          "org_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
+    },
+    {
+      "id": "d2277f31-697f-40ad-8f11-a8f8d078493a",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "927bdb1e-0fbd-4feb-8a87-e3bb7f03a4e9",
+      "name": "delete_organizations_members",
+      "description": "Removes a member from the organization. Projects Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org_id": {
+            "type": "string",
+            "description": "Path parameter: org_id"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "Path parameter: user_id"
+          }
+        },
+        "required": [
+          "org_id",
+          "user_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "be8c942e-0749-4d87-9359-61722793935c",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "b65957db-3a4a-4076-af91-fe8d4d71aa5b",
+      "name": "get_projects",
+      "description": "Lists projects. Query parameters: page, limit, search, status, owner_id",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "23eea5d8-d86b-4b6f-b32d-30386172edff",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "201a12c2-b052-41b2-94e6-e4a3ab9a0fa9",
+      "name": "get_projects",
+      "description": "Returns project details.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          }
+        },
+        "required": [
+          "project_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "f5e15da1-1529-46e4-a4dd-761937be75e6",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "1ea9cfb5-7bc1-4dc1-839d-2634b21bd028",
+      "name": "create_projects",
+      "description": "Creates a project. Request body: { \"name\": \"Customer Portal Revamp\", \"description\": \"Modernize the customer portal UX\", \"owner_id\": \"usr_01HZX9\", \"priority\": \"high\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "a430a35f-7e3c-40e3-994b-0d933bc0b235",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "585e3e21-ca02-441b-8566-b877a5ece919",
+      "name": "update_projects",
+      "description": "Updates a project.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          }
+        },
+        "required": [
+          "project_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "0c7423cf-ea01-4298-9b93-90b8f4de3143",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "514159d7-27b9-4cd5-872e-6f75de3a4461",
+      "name": "modify_projects_status",
+      "description": "Updates project status. Request body: { \"status\": \"in_progress\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          }
+        },
+        "required": [
+          "project_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "29fd9708-57ef-45a3-9d92-386845d42225",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "c91858a1-7a01-4d64-be52-9af642372263",
+      "name": "delete_projects",
+      "description": "Deletes a project.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          }
+        },
+        "required": [
+          "project_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "c9acb977-480c-44c0-a9f8-7d7984faee28",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "83b6c1ef-e67b-435e-a00a-199ccc7163d1",
+      "name": "get_projects_members",
+      "description": "Lists project members.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          }
+        },
+        "required": [
+          "project_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "ea2b23d9-2731-41cf-870e-dad129493a67",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "42e34f33-73cd-4667-a0f9-252f6d99a8f0",
+      "name": "create_projects_members",
+      "description": "Adds a project member. Request body: { \"user_id\": \"usr_02ABCD\", \"role\": \"editor\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          }
+        },
+        "required": [
+          "project_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "088cb5f4-44d5-4115-ae70-70cd560de8a3",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "4a165820-1479-4988-811b-04a8ef0babda",
+      "name": "delete_projects_members",
+      "description": "Removes a project member. Tasks Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "Path parameter: user_id"
+          }
+        },
+        "required": [
+          "project_id",
+          "user_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "a1a25d6c-ee90-4a5b-a7f4-734402ee235d",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "755c46e4-dbc7-4b66-8a07-77ddf3cd1820",
+      "name": "get_projects_tasks",
+      "description": "Lists tasks for a project. Query parameters: page, limit, status, assignee_id, priority",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          }
+        },
+        "required": [
+          "project_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "58aeab45-63f6-4c53-a34c-ceadd3d9de1d",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "5777314d-8f1a-4a44-b00f-0dd38fed960d",
+      "name": "get_tasks",
+      "description": "Returns task details.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "Path parameter: task_id"
+          }
+        },
+        "required": [
+          "task_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "76a91108-692c-4116-ace1-225d4ff9cf34",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "98160efd-be41-4132-b9b0-0d4aa211076d",
+      "name": "create_projects_tasks",
+      "description": "Creates a task. Request body: { \"title\": \"Design login flow\", \"description\": \"Create wireframes and review states\", \"assignee_id\": \"usr_01HZX9\", \"priority\": \"medium\", \"due_date\": \"2026-05-12\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          }
+        },
+        "required": [
+          "project_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "ebbd346b-cd8b-4798-af11-3679b7fb6e73",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "8de43351-85d0-424e-bef4-a609c00c3d98",
+      "name": "update_tasks",
+      "description": "Updates a task.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "Path parameter: task_id"
+          }
+        },
+        "required": [
+          "task_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "3b72c908-af53-4d5f-a986-cca833457bdf",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "575604b9-6807-4490-97aa-faf6320ac58f",
+      "name": "modify_tasks_status",
+      "description": "Updates task status. Request body: { \"status\": \"done\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "Path parameter: task_id"
+          }
+        },
+        "required": [
+          "task_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "75b94819-cead-4acc-8474-ac0e8bbe6f1d",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "682d6870-fec4-4239-8eda-e6fb56ac3235",
+      "name": "modify_tasks_assignee",
+      "description": "Reassigns a task. Request body: { \"assignee_id\": \"usr_02ABCD\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "Path parameter: task_id"
+          }
+        },
+        "required": [
+          "task_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "d200c3e5-92ba-4e62-98f2-cfb6c9ebd4bd",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "f2451024-b63a-41ab-a98f-f384104bda6b",
+      "name": "delete_tasks",
+      "description": "Deletes a task.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "Path parameter: task_id"
+          }
+        },
+        "required": [
+          "task_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "a98e21b7-ec5e-449f-b880-6ae382206d9e",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "9c40335a-b6d5-4f81-9236-7d900930ea56",
+      "name": "create_tasks_comments",
+      "description": "Adds a comment to a task. Request body: { \"body\": \"This is ready for review.\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "Path parameter: task_id"
+          }
+        },
+        "required": [
+          "task_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "0b532a8d-f9be-4640-81d1-329793d31187",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "c799ebd0-62eb-4ac2-86f2-4d2357ca803b",
+      "name": "get_tasks_comments",
+      "description": "Lists task comments. Files Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "Path parameter: task_id"
+          }
+        },
+        "required": [
+          "task_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "dd8b10f3-46a7-4312-8d7a-b7be04622623",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "6100c511-54d6-4d86-9f95-5b080d9e25b4",
+      "name": "get_projects_files",
+      "description": "Lists uploaded files for a project.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          }
+        },
+        "required": [
+          "project_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "2bf2d2e7-e607-46e9-8f85-80c10532aae7",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "c82fa3b5-d5f7-4a35-b718-c40df09273b7",
+      "name": "get_files",
+      "description": "Returns file metadata.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "file_id": {
+            "type": "string",
+            "description": "Path parameter: file_id"
+          }
+        },
+        "required": [
+          "file_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "f8f52797-fe00-47b4-8ff9-67718710cada",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "d26898fb-af71-42cd-9888-2ee98fa59e6b",
+      "name": "create_projects_files",
+      "description": "Uploads a new file. Request: multipart/form-data Fields: file, filename, category",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "description": "Path parameter: project_id"
+          }
+        },
+        "required": [
+          "project_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "52afa13d-a8bb-4ea0-b5d8-2a27ca6caa48",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "4c73d7c9-3a6c-4a9a-998c-3c49d149084e",
+      "name": "delete_files",
+      "description": "Deletes a file.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "file_id": {
+            "type": "string",
+            "description": "Path parameter: file_id"
+          }
+        },
+        "required": [
+          "file_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "c1f71559-8e56-4cec-99e7-214ce123016c",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "0c07a281-10ea-41bc-bce5-374099420fa2",
+      "name": "create_files_rename",
+      "description": "Renames a file. Request body: { \"filename\": \"spec-v2.pdf\" } Billing Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "file_id": {
+            "type": "string",
+            "description": "Path parameter: file_id"
+          }
+        },
+        "required": [
+          "file_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "e69fb17f-04a1-4a08-b638-f24a7a29436d",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "8295b2f5-9fd7-4093-a0cb-3e67b1e322c8",
+      "name": "get_billing_subscription",
+      "description": "Returns the current subscription.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "0582794f-9c73-4b4e-a534-00bb915d1d28",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "4629bffe-7eaf-4870-96a5-02d3a0065a58",
+      "name": "get_billing_invoices",
+      "description": "Lists invoices.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "2fa62e65-caef-4e54-a573-9f8a5196771d",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "022eb455-494a-48f0-bfeb-4daf766c9394",
+      "name": "get_billing_invoices",
+      "description": "Returns invoice details.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "invoice_id": {
+            "type": "string",
+            "description": "Path parameter: invoice_id"
+          }
+        },
+        "required": [
+          "invoice_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "c8297bf6-bb3f-4248-8c03-a4783c0f146d",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "922dcc0e-b0a4-4c21-96a6-5f8925f3c5f1",
+      "name": "create_billing_subscription_upgrade",
+      "description": "Upgrades the plan. Request body: { \"plan\": \"enterprise\", \"billing_cycle\": \"annual\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "b3a6f366-39ad-4bf7-9d52-cc0a53683ffb",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "08e310a5-bc31-4849-b337-67947ab21ae4",
+      "name": "create_billing_subscription_downgrade",
+      "description": "Downgrades the plan.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "af93b8e0-d40c-405b-94cc-a2f588217088",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "8fe42a07-9427-42a8-beac-6df2f11c82a5",
+      "name": "create_billing_payment_methods",
+      "description": "Adds a payment method. Request body: { \"type\": \"card\", \"token\": \"tok_visa_123\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
+    },
+    {
+      "id": "a9f18889-75de-491b-82d4-3e940a0fe36d",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "e359dfc6-6b67-41bf-b14a-93d3aab0a935",
+      "name": "get_billing_payment_methods",
+      "description": "Lists payment methods.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "828754d0-f1e4-4d04-ae54-7c92dd2eebd0",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "bfcf30ed-7d30-45e4-b01c-291b97fc6e79",
+      "name": "delete_billing_payment_methods",
+      "description": "Removes a payment method. Notifications Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "method_id": {
+            "type": "string",
+            "description": "Path parameter: method_id"
+          }
+        },
+        "required": [
+          "method_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "23b77960-a2e6-4043-9e26-4db7eb7fd573",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "04579a61-d29d-4bc4-b826-ce447d998bc3",
+      "name": "get_notifications",
+      "description": "Lists notifications. Query parameters: page, limit, unread_only",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "1c743d86-c91e-45b3-9dad-228b56037f2e",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "dd89f41d-4de8-4540-8d75-77dd6322e21e",
+      "name": "modify_notifications_read",
+      "description": "Marks a notification as read.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "notification_id": {
+            "type": "string",
+            "description": "Path parameter: notification_id"
+          }
+        },
+        "required": [
+          "notification_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "bf35d78f-258c-498b-a0b4-20eca39df88f",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "bc4ce118-cfd9-4458-a3d0-15f909270fa0",
+      "name": "modify_notifications_read_all",
+      "description": "Marks all notifications as read.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "3a6cbfce-cfbe-4869-8229-f552f14bfe5c",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "32276c05-b516-426e-b057-e8948575b87b",
+      "name": "create_notifications_test",
+      "description": "Sends a test notification to the current user. Audit Logs Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "deef7e30-9f60-4e4a-98b4-6a7c8ea2cf95",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "51292995-ab8e-4f4e-ae6e-6bf4a67c6eab",
+      "name": "get_audit_logs",
+      "description": "Lists audit log entries. Query parameters: page, limit, actor_id, action, resource_type, date_from, date_to",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "896438d8-9e1a-4002-8144-2e957c4a77c1",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "cefa6527-8bf4-48e9-b6f5-c5f9a64d8888",
+      "name": "get_audit_logs",
+      "description": "Returns a single audit entry. Analytics Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "log_id": {
+            "type": "string",
+            "description": "Path parameter: log_id"
+          }
+        },
+        "required": [
+          "log_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "15b634c6-aa1a-4e74-a86a-8858f9a28a38",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "2877d70f-bae8-440a-ae2f-ba404dfa48b4",
+      "name": "get_analytics_overview",
+      "description": "Returns high-level platform metrics. Response: { \"success\": true, \"data\": { \"active_users\": 1842, \"projects_created_30d\": 126, \"tasks_completed_30d\": 948, \"revenue_mrr\": 48200 } }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "3fa786ea-c3be-4d92-baaf-1a05059a0b1e",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "689bf182-0c1d-48fd-a1ec-10e13b8b67a8",
+      "name": "get_analytics_users",
+      "description": "Returns user growth analytics.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "ad3946dd-e0f6-4330-941c-5db4b105d794",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "cf1a0148-ef79-4c9a-b8f2-fcd87d46d195",
+      "name": "get_analytics_projects",
+      "description": "Returns project analytics.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "14258951-682d-4d0e-a82b-4b4e45f62adb",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "b242bd55-c0cb-41fe-bcaf-9bb48d65d4ab",
+      "name": "get_analytics_billing",
+      "description": "Returns billing analytics. Search Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "d260d667-2eec-42fc-99c9-600ecda63f97",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "da5d86fb-2059-43e3-900d-b8a0bc4a1c9d",
+      "name": "get_search",
+      "description": "Searches across users, projects, tasks, files, and notifications. Query parameters: q, type, page, limit Webhooks Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "2aae8f54-441e-4995-b0a7-86266a414509",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "d3cb47e2-ea0a-4737-9573-04e123e94775",
+      "name": "get_webhooks",
+      "description": "Lists webhook subscriptions.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "2ecc89c9-503b-4264-bf7f-430d2dba0ae0",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "d45e1b5e-c9ac-4081-8261-6c75863e013c",
+      "name": "create_webhooks",
+      "description": "Creates a webhook subscription. Request body: { \"name\": \"task-updates\", \"url\": \"https://example.com/webhooks/task-updates\", \"events\": [\"task.created\", \"task.updated\", \"task.deleted\"], \"secret\": \"whsec_123\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
+    },
+    {
+      "id": "cc8ac20e-7180-4a64-8c76-d8c0919b3131",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "99c6d1b6-66b6-46b4-86fc-92057b3edc66",
+      "name": "get_webhooks",
+      "description": "Returns webhook details.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "webhook_id": {
+            "type": "string",
+            "description": "Path parameter: webhook_id"
+          }
+        },
+        "required": [
+          "webhook_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "9af56087-5003-40ec-8451-2352f5a5947a",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "e139468f-3ad9-432b-93d3-5f1f2710f9ea",
+      "name": "update_webhooks",
+      "description": "Updates a webhook subscription.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "webhook_id": {
+            "type": "string",
+            "description": "Path parameter: webhook_id"
+          }
+        },
+        "required": [
+          "webhook_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "b92dc7f5-75da-40b2-bd9c-6eb722ccd4a5",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "c722e129-2925-47f4-8e6a-ac7ea7372857",
+      "name": "delete_webhooks",
+      "description": "Deletes a webhook subscription.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "webhook_id": {
+            "type": "string",
+            "description": "Path parameter: webhook_id"
+          }
+        },
+        "required": [
+          "webhook_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "7503ff87-f990-401e-ba61-e2fde06011a9",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "2b41bc95-b945-4bef-a320-9a490cc146ff",
+      "name": "create_webhooks_test",
+      "description": "Sends a test event. Webhook Events task.created task.updated task.deleted project.created project.updated user.invited invoice.paid invoice.failed Integrations Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "webhook_id": {
+            "type": "string",
+            "description": "Path parameter: webhook_id"
+          }
+        },
+        "required": [
+          "webhook_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
+    },
+    {
+      "id": "e20f002e-5898-435b-ae01-78e9a65d3cde",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "a871398c-7052-4b90-bbe7-d2a6a21395bd",
+      "name": "get_integrations",
+      "description": "Lists connected integrations.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "e4272ef6-4ea9-4779-a97d-4cdc001a8114",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "c5ecd521-b8a7-4421-9ebf-6471bc03036e",
+      "name": "create_integrations",
+      "description": "Connects a new integration. Request body: { \"provider\": \"slack\", \"settings\": { \"workspace\": \"northwind\" } }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "0615651b-27ff-4365-8dfc-565cdcf5372e",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "53db8e26-6b04-4938-8d77-c06635219220",
+      "name": "delete_integrations",
+      "description": "Disconnects an integration.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "integration_id": {
+            "type": "string",
+            "description": "Path parameter: integration_id"
+          }
+        },
+        "required": [
+          "integration_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "94cb1cfe-d86b-4f34-97ac-16038d4b693b",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "a581c87a-e9a9-4c73-a676-575c2d834e8c",
+      "name": "create_integrations_sync",
+      "description": "Triggers a manual sync. Reports Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "integration_id": {
+            "type": "string",
+            "description": "Path parameter: integration_id"
+          }
+        },
+        "required": [
+          "integration_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "1040b14f-d356-43a1-9a0c-cf8ec2278264",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "dc633928-667a-463b-b19e-865e65c9e49f",
+      "name": "get_reports",
+      "description": "Lists saved reports.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "02e607fa-9873-4300-b5f3-6545026b0cd0",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "8015fa72-5926-458d-9200-41520e2e9f4c",
+      "name": "create_reports",
+      "description": "Creates a report. Request body: { \"name\": \"Monthly Operations Report\", \"type\": \"pdf\", \"filters\": { \"project_id\": \"prj_01HZX9\" } }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "c2c37139-dce2-44ed-bfd0-d28c6883ba2d",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "d4119f79-d135-4e55-a67d-bd6c97fd7453",
+      "name": "get_reports",
+      "description": "Returns report details.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "report_id": {
+            "type": "string",
+            "description": "Path parameter: report_id"
+          }
+        },
+        "required": [
+          "report_id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "9b0d13d4-a545-499e-8569-eb3dc8471ab1",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "062fb07d-787f-4e76-aaf9-c47bf6e75d0d",
+      "name": "create_reports_run",
+      "description": "Runs a report.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "report_id": {
+            "type": "string",
+            "description": "Path parameter: report_id"
+          }
+        },
+        "required": [
+          "report_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "8ad0986e-b3a5-416a-81d2-50c1dc5417a0",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "b0ebfc47-d433-429e-b56e-7117a6a948a0",
+      "name": "delete_reports",
+      "description": "Deletes a report. Rate-Limited Admin Endpoints",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "report_id": {
+            "type": "string",
+            "description": "Path parameter: report_id"
+          }
+        },
+        "required": [
+          "report_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Destructive operation that permanently removes data"
+    },
+    {
+      "id": "55d38240-42a0-4fc9-938f-15822579e5e6",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "90fc10f2-22f2-42e5-b5c7-9334691156eb",
+      "name": "get_admin_health",
+      "description": "Returns service health.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "2158758b-61a5-4863-bffe-c34cacb14f01",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "645e1079-c0dc-4565-80f6-3b66dc80792c",
+      "name": "get_admin_metrics",
+      "description": "Returns internal metrics.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "a559b69b-7ef1-4077-adff-952f9c2245b6",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "cc454e0b-4d68-4b91-9a80-c92e3c95c987",
+      "name": "get_admin_users",
+      "description": "Lists all users across organizations.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "4f1c6fc7-69c9-4846-aee3-6284027ff6ad",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "fa8bb093-589a-479b-96c6-8e3197165fbf",
+      "name": "create_admin_organizations_suspend",
+      "description": "Suspends an organization. Request body: { \"reason\": \"Policy violation\" }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org_id": {
+            "type": "string",
+            "description": "Path parameter: org_id"
+          }
+        },
+        "required": [
+          "org_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
+    },
+    {
+      "id": "2555dbfb-4303-493b-81e5-c610ed80d9d5",
+      "projectId": "02488f3b-8d82-4247-9950-70f0288ccab0",
+      "endpointId": "517d2300-c800-47ed-b744-4fc33769f407",
+      "name": "create_admin_organizations_unsuspend",
+      "description": "Restores a suspended organization. Object Schemas User { \"id\": \"usr_01HZX9\", \"name\": \"Maya Chen\", \"email\": \"maya@example.com\", \"role\": \"admin\", \"status\": \"active\", \"created_at\": \"2026-05-03T10:15:30Z\" } Project { \"id\": \"prj_01HZX9\", \"name\": \"Customer Portal Revamp\", \"description\": \"Modernize the customer portal UX\", \"status\": \"in_progress\", \"priority\": \"high\", \"owner_id\": \"usr_01HZX9\" } Task { \"id\": \"tsk_01HZX9\", \"title\": \"Design login flow\", \"description\": \"Create wireframes and review states\", \"status\": \"todo\", \"priority\": \"medium\", \"assignee_id\": \"usr_02ABCD\" } Standard HTTP Status Codes 200 OK 201 Created 204 No Content 400 Bad Request 401 Unauthorized 403 Forbidden 404 Not Found 409 Conflict 422 Validation Error 429 Too Many Requests 500 Internal Server Error Example End-to-End Flow 1. Register or log in. 2. Create an organization. 3. Add members. 4. Create a project. 5. Add tasks and files. 6. Review analytics and audit logs. 7. Export reports. 8. Connect webhooks and integrations. Example cURL curl -X GET https://api.atlasops.example.com/v1/projects \\ -H \"Authorization: Bearer <token>\" \\ -H \"Accept: application/json\" curl -X POST https://api.atlasops.example.com/v1/projects \\ -H \"Authorization: Bearer <token>\" \\ -H \"Content-Type: application/json\" \\ -d '{ \"name\": \"Customer Portal Revamp\", \"description\": \"Modernize the customer portal UX\", \"owner_id\": \"usr_01HZX9\", \"priority\": \"high\" }' curl -X POST https://api.atlasops.example.com/v1/projects/prj_01HZX9/tasks \\ -H \"Authorization: Bearer <token>\" \\ -H \"Content-Type: application/json\" \\ -d '{ \"title\": \"Design login flow\", \"description\": \"Create wireframes and review states\", \"assignee_id\": \"usr_02ABCD\", \"priority\": \"medium\", \"due_date\": \"2026-05-12\" }'",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org_id": {
+            "type": "string",
+            "description": "Path parameter: org_id"
+          }
+        },
+        "required": [
+          "org_id"
+        ]
+      },
+      "riskLevel": "CRITICAL",
+      "approvalRequired": true,
+      "riskReason": "Modifies sensitive data (payroll, admin, etc.)"
     }
   ]
 }

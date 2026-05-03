@@ -6,6 +6,8 @@ import { useParams } from 'next/navigation';
 import { api } from '@/lib/api';
 import { AgentResponse, Approval, Project } from '@/types';
 import { ActionLink, EmptyState, Panel, Pill, SectionHeader } from '@/components/site';
+import { DemoDataset } from '@/lib/demo-data';
+import { runDemoQuery } from '@/lib/demo-executor';
 
 interface Message {
   id: string;
@@ -26,6 +28,8 @@ export default function PlaygroundPage() {
   const [sending, setSending] = useState(false);
   const [approvals, setApprovals] = useState<Approval[]>([]);
   const [error, setError] = useState('');
+  const [demoDataset, setDemoDataset] = useState<DemoDataset | null>(null);
+  const [dataNotice, setDataNotice] = useState('');
 
   useEffect(() => {
     const loadData = async () => {
@@ -56,6 +60,65 @@ export default function PlaygroundPage() {
     loadData();
   }, [projectId]);
 
+  const addAgentNotice = (content: string) => {
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: Date.now().toString(),
+        type: 'agent',
+        content,
+        timestamp: new Date().toISOString(),
+      },
+    ]);
+  };
+
+  const handleUploadDemoData = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text);
+      const normalized: DemoDataset = parsed.collections
+        ? parsed
+        : {
+            name: parsed.name || file.name.replace(/\.[^.]+$/, ''),
+            description: parsed.description || 'Uploaded custom demo dataset',
+            collections: parsed,
+          };
+
+      if (!normalized.collections || typeof normalized.collections !== 'object') {
+        throw new Error('Missing collections object');
+      }
+
+      setDemoDataset(normalized);
+      setDataNotice(`Loaded ${file.name}. Demo mode is active.`);
+      addAgentNotice(`Custom demo data loaded from ${file.name}. Queries will now run locally against the uploaded dataset.`);
+    } catch (err) {
+      setError('Please upload a valid JSON data file with collections for the demo mode.');
+    } finally {
+      e.target.value = '';
+    }
+  };
+
+  const sampleQueries = demoDataset
+    ? [
+        'List active users',
+        'Show project details for prj_3001',
+        'List open invoices',
+        'Create a new task called Design checkout flow',
+      ]
+    : [
+        'How many leaves does employee E102 have?',
+        'Get payroll information for E101',
+        'Check leave balance for E103',
+        'Create an HR ticket for E102',
+      ];
+
+  const collectionSummary = demoDataset
+    ? Object.entries(demoDataset.collections).map(([name, items]) => ({ name, count: items.length }))
+    : [];
+
   const handleSend = async () => {
     if (!input.trim() || sending) return;
 
@@ -72,8 +135,16 @@ export default function PlaygroundPage() {
     setError('');
 
     try {
-      const response = await api.agent.query(projectId, input);
-      const agentResponse: AgentResponse = response.data.data;
+      let agentResponse: AgentResponse;
+
+      if (demoDataset) {
+        const nextDemoDataset = JSON.parse(JSON.stringify(demoDataset)) as DemoDataset;
+        agentResponse = runDemoQuery(input, nextDemoDataset);
+        setDemoDataset(nextDemoDataset);
+      } else {
+        const response = await api.agent.query(projectId, input);
+        agentResponse = response.data.data;
+      }
 
       const agentMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -184,7 +255,10 @@ export default function PlaygroundPage() {
                 <p className="mt-2 text-sm text-white/55">Agent chat and approval workflow</p>
               </div>
             </div>
-            {approvals.length > 0 ? <Pill tone="accent">{approvals.length} pending approvals</Pill> : <Pill tone="success">No pending approvals</Pill>}
+            <div className="flex flex-wrap gap-2">
+              {demoDataset ? <Pill tone="accent">Demo data active</Pill> : <Pill tone="default">Live backend</Pill>}
+              {approvals.length > 0 ? <Pill tone="accent">{approvals.length} pending approvals</Pill> : <Pill tone="success">No pending approvals</Pill>}
+            </div>
           </div>
         </div>
       </header>
@@ -273,6 +347,64 @@ export default function PlaygroundPage() {
 
           <div className="space-y-6">
             <Panel className="p-6">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="section-kicker">Demo data</p>
+                  <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--text)]">Upload your dataset</h2>
+                  <p className="mt-2 text-sm text-white/55">
+                    Upload a JSON file to run the playground in local demo mode.
+                  </p>
+                </div>
+                <Pill tone={demoDataset ? 'accent' : 'default'}>{demoDataset ? 'Demo mode' : 'Live mode'}</Pill>
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-3">
+                <label className="btn btn-primary cursor-pointer text-xs uppercase tracking-[0.18em]">
+                  <input type="file" accept=".json,application/json" className="hidden" onChange={handleUploadDemoData} />
+                  Upload JSON
+                </label>
+                <a
+                  href="/demo-data/atlas-api-demo.json"
+                  download
+                  className="btn btn-secondary text-xs uppercase tracking-[0.18em]"
+                >
+                  Download Atlas sample JSON
+                </a>
+              </div>
+
+              {dataNotice ? <p className="mt-4 text-sm text-white/50">{dataNotice}</p> : null}
+
+              {demoDataset ? (
+                <div className="mt-5 space-y-4">
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div className="subtle-frame p-4">
+                      <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Dataset</p>
+                      <p className="mt-3 text-sm text-white/78">{demoDataset.name}</p>
+                      <p className="mt-2 text-xs text-white/45">{demoDataset.description}</p>
+                    </div>
+                    <div className="subtle-frame p-4">
+                      <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Collections</p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {collectionSummary.map((item) => (
+                          <span key={item.name} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-white/68">
+                            {item.name}: {item.count}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="overflow-hidden rounded-[24px] border border-white/10 bg-black/30 p-4">
+                    <p className="text-[11px] uppercase tracking-[0.24em] text-white/35">Demo preview</p>
+                    <pre className="mt-3 max-h-56 overflow-auto font-mono text-[11px] leading-5 text-white/72">
+                      {JSON.stringify(demoDataset, null, 2)}
+                    </pre>
+                  </div>
+                </div>
+              ) : null}
+            </Panel>
+
+            <Panel className="p-6">
               <p className="section-kicker">Approvals</p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--text)]">Pending approvals</h2>
 
@@ -319,12 +451,7 @@ export default function PlaygroundPage() {
             <Panel className="p-6">
               <p className="section-kicker">Sample queries</p>
               <div className="mt-4 space-y-2">
-                {[
-                  'How many leaves does employee E102 have?',
-                  'Get payroll information for E101',
-                  'Check leave balance for E103',
-                  'Create an HR ticket for E102',
-                ].map((query) => (
+                {sampleQueries.map((query) => (
                   <button
                     key={query}
                     onClick={() => setInput(query)}
