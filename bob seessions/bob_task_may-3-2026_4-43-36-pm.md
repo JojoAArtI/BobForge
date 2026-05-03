@@ -6,9 +6,9 @@ PORT=3001
 NODE_ENV=development
 
 # watsonx.ai Configuration
-WATSONX_API_KEY=YpTLciX6maxgJe7K7Bnv45eEdKwRuVlUIKES2rGar4jb
+WATSONX_API_KEY=<redacted_watsonx_api_key>
 WATSONX_URL=https://us-south.ml.cloud.ibm.com
-WATSONX_PROJECT_ID=ef3bde4b-242c-4e68-b74d-808d3382b4a1
+WATSONX_PROJECT_ID=<redacted_watsonx_project_id>
 
 # Model Configuration
 WATSONX_MODEL_ID=ibm/granite-13b-chat-v2
@@ -159,7 +159,7 @@ The user then ran the application and encountered issues understanding:
 ### 4. Relevant Files and Code
 
 **Environment Configuration:**
-- `backend/.env` - Configured with watsonx.ai credentials (API key: YpTLciX6maxgJe7K7Bnv45eEdKwRuVlUIKES2rGar4jb, Project ID: ef3bde4b-242c-4e68-b74d-808d3382b4a1)
+- `backend/.env` - Configured with watsonx.ai credentials (API key: <redacted_watsonx_api_key>, Project ID: <redacted_watsonx_project_id>)
 - `frontend/.env` - Fixed API URL to include `/api` path: `NEXT_PUBLIC_API_URL=http://localhost:3001/api`
 
 **IBM Bob Session Reports (Critical for Judging):**
@@ -6814,4 +6814,5 @@ Below is your current list of reminders for this task. Keep them updated as you 
 IMPORTANT: When task status changes, remember to call the `update_todo_list` tool to update your progress.
 
 </environment_details>
+
 

@@ -299,9 +299,9 @@ PORT=3001
 NODE_ENV=development
 
 # watsonx.ai
-WATSONX_API_KEY=YpTLciX6maxgJe7K7Bnv45eEdKwRuVlUIKES2rGar4jb
+WATSONX_API_KEY=<your_watsonx_api_key>
 WATSONX_URL=https://us-south.ml.cloud.ibm.com
-WATSONX_PROJECT_ID=ef3bde4b-242c-4e68-b74d-808d3382b4a1
+WATSONX_PROJECT_ID=<your_watsonx_project_id>
 WATSONX_MODEL_ID=ibm/granite-13b-chat-v2
 WATSONX_MAX_TOKENS=2000
 WATSONX_TEMPERATURE=0.7

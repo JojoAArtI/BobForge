@@ -361,8 +361,8 @@ if (!data.apiDocumentation || data.apiDocumentation.trim().length === 0) {
 **`backend/.env`**
 - Contains watsonx.ai credentials:
 ```env
-WATSONX_API_KEY=YpTLciX6maxgJe7K7Bnv45eEdKwRuVlUIKES2rGar4jb
-WATSONX_PROJECT_ID=ef3bde4b-242c-4e68-b74d-808d3382b4a1
+WATSONX_API_KEY=<redacted_watsonx_api_key>
+WATSONX_PROJECT_ID=<redacted_watsonx_project_id>
 WATSONX_MOCK_MODE=false
 ```
 
@@ -9180,9 +9180,9 @@ IMPORTANT: When task status changes, remember to call the `update_todo_list` too
  4 | 
  5 | # watsonx.ai Configuration
  6 | # Get your credentials from: https://cloud.ibm.com
- 7 | WATSONX_API_KEY=YpTLciX6maxgJe7K7Bnv45eEdKwRuVlUIKES2rGar4jb
+ 7 | WATSONX_API_KEY=<redacted_watsonx_api_key>
  8 | WATSONX_URL=https://us-south.ml.cloud.ibm.com
- 9 | WATSONX_PROJECT_ID=ef3bde4b-242c-4e68-b74d-808d3382b4a1
+ 9 | WATSONX_PROJECT_ID=<redacted_watsonx_project_id>
 10 | 
 11 | # Model Configuration
 12 | WATSONX_MODEL_ID=ibm/granite-13b-chat-v2
@@ -9264,12 +9264,12 @@ Share these with your teammates for the BobForge project:
 
 ### watsonx.ai API Key
 ```
-YpTLciX6maxgJe7K7Bnv45eEdKwRuVlUIKES2rGar4jb
+<redacted_watsonx_api_key>
 ```
 
 ### watsonx.ai Project ID
 ```
-ef3bde4b-242c-4e68-b74d-808d3382b4a1
+<redacted_watsonx_project_id>
 ```
 
 ### watsonx.ai URL
@@ -9303,9 +9303,9 @@ PORT=3001
 NODE_ENV=development
 
 # watsonx.ai Configuration
-WATSONX_API_KEY=YpTLciX6maxgJe7K7Bnv45eEdKwRuVlUIKES2rGar4jb
+WATSONX_API_KEY=<redacted_watsonx_api_key>
 WATSONX_URL=https://us-south.ml.cloud.ibm.com
-WATSONX_PROJECT_ID=ef3bde4b-242c-4e68-b74d-808d3382b4a1
+WATSONX_PROJECT_ID=<redacted_watsonx_project_id>
 
 # Model Configuration
 WATSONX_MODEL_ID=ibm/granite-13b-chat-v2
@@ -9343,9 +9343,9 @@ Tell your friends to create `backend/.env` and paste this:
 ```
 PORT=3001
 NODE_ENV=development
-WATSONX_API_KEY=YpTLciX6maxgJe7K7Bnv45eEdKwRuVlUIKES2rGar4jb
+WATSONX_API_KEY=<redacted_watsonx_api_key>
 WATSONX_URL=https://us-south.ml.cloud.ibm.com
-WATSONX_PROJECT_ID=ef3bde4b-242c-4e68-b74d-808d3382b4a1
+WATSONX_PROJECT_ID=<redacted_watsonx_project_id>
 WATSONX_MODEL_ID=ibm/granite-13b-chat-v2
 WATSONX_MAX_TOKENS=2000
 WATSONX_TEMPERATURE=0.7
@@ -9364,8 +9364,8 @@ This will use mock data instead of real API calls.
 
 ## Summary
 
-**API Key:** `YpTLciX6maxgJe7K7Bnv45eEdKwRuVlUIKES2rGar4jb`  
-**Project ID:** `ef3bde4b-242c-4e68-b74d-808d3382b4a1`  
+**API Key:** `<redacted_watsonx_api_key>`  
+**Project ID:** `<redacted_watsonx_project_id>`  
 **URL:** `https://us-south.ml.cloud.ibm.com`
 
 Share these credentials with your team so they can run BobForge with real watsonx.ai integration! 🚀
@@ -9375,4 +9375,5 @@ Share these credentials with your team so they can run BobForge with real watson
 **Note:** These credentials are for the hackathon. Make sure to keep them secure and don't share them publicly outside your team.
 </result>
 </attempt_completion>
+
 

@@ -63,9 +63,9 @@ PORT=3001
 NODE_ENV=development
 
 # watsonx.ai Configuration
-WATSONX_API_KEY=your_api_key_here
+WATSONX_API_KEY=<your_watsonx_api_key>
 WATSONX_URL=https://us-south.ml.cloud.ibm.com
-WATSONX_PROJECT_ID=your_project_id_here
+WATSONX_PROJECT_ID=<your_watsonx_project_id>
 
 # Model Configuration
 WATSONX_MODEL_ID=ibm/granite-13b-chat-v2
@@ -316,7 +316,7 @@ curl -I https://us-south.ml.cloud.ibm.com
 # Test authentication
 curl -X POST https://iam.cloud.ibm.com/identity/token \
   -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey=YOUR_API_KEY"
+  -d "grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey=<YOUR_WATSONX_API_KEY>"
 ```
 
 ### Model Issues
