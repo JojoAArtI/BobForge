@@ -1,0 +1,961 @@
+{
+  "tools": [
+    {
+      "id": "dd6eb31b-d670-4afc-9c3e-c91bdb3745d4",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "e091b225-0f0a-4045-818b-f474753c5e76",
+      "name": "get_employees_leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "c30cce04-2e75-4849-b388-5f7f6db51093",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "23abe55d-fc0c-4fc6-b2a3-4df7a427bb4e",
+      "name": "create_employees_leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "79fd8b4f-3072-4a72-8a9f-fcbf2dfd7c71",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "7a9e4649-ab56-4bba-9e0b-c0a31081d47b",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "7dc67a4f-d1d3-4b88-97bd-d8cfec6a986c",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "1d1c4717-fdb1-477e-9c41-0ad6fab80c68",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "544208ea-9d67-42c6-b93b-2b920246b781",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "38fbc809-fe81-429e-8edb-86d20d8cf481",
+      "name": "get_employees_leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "89deba21-ca1b-456c-8cd1-4e8c863e5dad",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "39470627-9bea-4abc-af46-cc65e0f3bdf4",
+      "name": "create_employees_leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "3c0c8464-3c40-4880-9d97-da1a02e2170a",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "3588c668-f932-420f-b6fc-52ca535f310e",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "481f4e08-3cda-4750-81f8-a6782c9184be",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "888c1727-cf3d-4608-acb1-8a04ec0b3457",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "6559fb85-1bf3-4db6-9ee6-4d1703bba504",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "e091b225-0f0a-4045-818b-f474753c5e76",
+      "name": "get_employees_leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "0165f96e-e2a1-4e7e-ade1-70503e7b83a6",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "23abe55d-fc0c-4fc6-b2a3-4df7a427bb4e",
+      "name": "create_employees_leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "acd780b1-83ef-4c96-b7fc-8aebf21669c1",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "7a9e4649-ab56-4bba-9e0b-c0a31081d47b",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "fc7de188-6a2f-4fef-b9d3-06ab81921ff2",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "1d1c4717-fdb1-477e-9c41-0ad6fab80c68",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "96742f8b-16ef-4397-8b3e-8d9f30f34b50",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "e091b225-0f0a-4045-818b-f474753c5e76",
+      "name": "get_employees_leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "6eba01e7-fcca-4518-af87-9b8f62343f36",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "23abe55d-fc0c-4fc6-b2a3-4df7a427bb4e",
+      "name": "create_employees_leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "2a1f15e8-c188-4aa0-9647-076bcc96c61c",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "7a9e4649-ab56-4bba-9e0b-c0a31081d47b",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "d2361144-5627-49f7-89e8-1d975be3d1f7",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "1d1c4717-fdb1-477e-9c41-0ad6fab80c68",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "84986ccb-a5b8-4344-891c-67983a1a5dc6",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "38fbc809-fe81-429e-8edb-86d20d8cf481",
+      "name": "get_employees_leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "3397bee2-552c-4631-a880-6629334f0c5a",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "39470627-9bea-4abc-af46-cc65e0f3bdf4",
+      "name": "create_employees_leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "4abe82cd-1412-4fd7-97ca-cfd3ec95ad0b",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "3588c668-f932-420f-b6fc-52ca535f310e",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "dd1a084f-beb3-48d2-ade9-5fc77db2d763",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "888c1727-cf3d-4608-acb1-8a04ec0b3457",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "bdbf8e3e-927b-480f-bd5e-b3ba967b8e18",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "38fbc809-fe81-429e-8edb-86d20d8cf481",
+      "name": "get_employees_leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "f09c1bdd-86d3-40cd-bd10-bf09a3f4c686",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "39470627-9bea-4abc-af46-cc65e0f3bdf4",
+      "name": "create_employees_leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "26acd89e-716a-45d7-8c34-ce3f78f65da7",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "3588c668-f932-420f-b6fc-52ca535f310e",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "c31aab5c-c35e-4f5d-b390-e3555170d1e7",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "endpointId": "888c1727-cf3d-4608-acb1-8a04ec0b3457",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "bb3c9e45-fcd1-4df4-b834-64505f6cd379",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "e091b225-0f0a-4045-818b-f474753c5e76",
+      "name": "get_employees_leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "cca1b1e1-f5f7-4147-8a54-8f18de915572",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "23abe55d-fc0c-4fc6-b2a3-4df7a427bb4e",
+      "name": "create_employees_leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "72a5c1ed-6881-41af-a7cb-0202b3db42b2",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "7a9e4649-ab56-4bba-9e0b-c0a31081d47b",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "0f0969cd-675b-411b-bdd9-33f5692071c7",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "endpointId": "1d1c4717-fdb1-477e-9c41-0ad6fab80c68",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "ce73ffde-c3b9-46f2-a9d8-489091e8d744",
+      "projectId": "6ebe8b52-5b89-49a6-95c1-fd96bc829937",
+      "endpointId": "61c8127c-57e8-4fa0-9d88-6ae5136e1a2b",
+      "name": "get_employees_leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "5e709d0e-c59f-4abd-9b63-198146167e80",
+      "projectId": "6ebe8b52-5b89-49a6-95c1-fd96bc829937",
+      "endpointId": "a0c5d9d7-1704-4836-9282-b6ff92c1e9a5",
+      "name": "create_employees_leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "df2ac963-86e1-46d4-93e5-3353e89a06b3",
+      "projectId": "6ebe8b52-5b89-49a6-95c1-fd96bc829937",
+      "endpointId": "60102c5e-965f-4d72-8706-c5bd413890f8",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "4c785eee-74cb-4f6f-96c6-e41b05819b41",
+      "projectId": "6ebe8b52-5b89-49a6-95c1-fd96bc829937",
+      "endpointId": "cb3b50f7-e477-47f7-b143-00262e64846c",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "9c26495d-133e-44d2-acec-038a93c78652",
+      "projectId": "ab57ae62-bf84-4b8f-886f-9bf8af77817a",
+      "endpointId": "39c18a30-db73-4534-bad4-3a8458653173",
+      "name": "get_employees_leave_balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "6e8a3a48-f950-4ec9-935a-abca5bd08135",
+      "projectId": "ab57ae62-bf84-4b8f-886f-9bf8af77817a",
+      "endpointId": "263442fe-425e-40ed-b13c-9873156938ee",
+      "name": "create_employees_leave_request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "ae50c73d-d068-4ce0-b506-fb152bc530b9",
+      "projectId": "ab57ae62-bf84-4b8f-886f-9bf8af77817a",
+      "endpointId": "4183beba-7871-46ae-a005-2930b3becb60",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "d9ff0dc4-9786-4bc4-a3cb-1ec6895418fb",
+      "projectId": "ab57ae62-bf84-4b8f-886f-9bf8af77817a",
+      "endpointId": "c90cb2f6-a0b9-45e3-a669-c61613e2c078",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "1da127a1-62dc-42f5-b728-60dd30b7a6f7",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "endpointId": "7fae2a0f-5580-4b54-b2f8-e8332323a5cf",
+      "name": "get_employees_leave_balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "f79a163a-50d5-4a71-8c42-5c5ee073f429",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "endpointId": "9eeb22ff-2962-4fff-8eb7-f2f95d2c0bc0",
+      "name": "create_employees_leave_request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "fad74f55-1b2a-497b-936a-3ce9eb2b7fab",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "endpointId": "7a929484-a256-4360-b0e2-63cfd17ad946",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "f6127400-7c30-48a6-ac9e-0220554ece2c",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "endpointId": "fdafd984-8f9f-47fd-ade8-4f8f27006bcf",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "b034ce6b-0b0b-4d78-b606-784681a6c9b3",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "endpointId": "7fae2a0f-5580-4b54-b2f8-e8332323a5cf",
+      "name": "get_employees_leave_balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "riskReason": "Safe read-only operation"
+    },
+    {
+      "id": "14b86293-6c30-414b-bdc0-e3f7e132069e",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "endpointId": "9eeb22ff-2962-4fff-8eb7-f2f95d2c0bc0",
+      "name": "create_employees_leave_request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    },
+    {
+      "id": "4aacb6aa-6a3e-4794-8f09-3c0ee4b6ee17",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "endpointId": "7a929484-a256-4360-b0e2-63cfd17ad946",
+      "name": "get_employees_payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "id"
+        ]
+      },
+      "riskLevel": "MEDIUM",
+      "approvalRequired": false,
+      "riskReason": "Read operation accessing sensitive data"
+    },
+    {
+      "id": "a53849f1-4f6d-4250-b1f2-8dcf7f0d4a53",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "endpointId": "fdafd984-8f9f-47fd-ade8-4f8f27006bcf",
+      "name": "create_hr_tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "employee_id"
+        ]
+      },
+      "riskLevel": "HIGH",
+      "approvalRequired": true,
+      "riskReason": "Modifies or creates data"
+    }
+  ]
+}

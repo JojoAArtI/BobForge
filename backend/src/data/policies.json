@@ -1,0 +1,308 @@
+{
+  "policies": [
+    {
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "rules": [
+        {
+          "condition": "tool.name === 'get_employees_leave-balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave-request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_leave-balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave-request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_leave-balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave-request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        }
+      ],
+      "defaultApprovalRequired": false,
+      "createdAt": "2026-05-03T07:19:14.655Z",
+      "updatedAt": "2026-05-03T07:19:14.655Z"
+    },
+    {
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "rules": [
+        {
+          "condition": "tool.name === 'get_employees_leave-balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave-request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_leave-balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave-request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_leave-balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave-request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_leave-balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave-request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        }
+      ],
+      "defaultApprovalRequired": false,
+      "createdAt": "2026-05-03T07:19:32.279Z",
+      "updatedAt": "2026-05-03T07:19:32.279Z"
+    },
+    {
+      "projectId": "6ebe8b52-5b89-49a6-95c1-fd96bc829937",
+      "rules": [
+        {
+          "condition": "tool.name === 'get_employees_leave-balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave-request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        }
+      ],
+      "defaultApprovalRequired": false,
+      "createdAt": "2026-05-03T07:21:19.578Z",
+      "updatedAt": "2026-05-03T07:21:19.578Z"
+    },
+    {
+      "projectId": "ab57ae62-bf84-4b8f-886f-9bf8af77817a",
+      "rules": [
+        {
+          "condition": "tool.name === 'get_employees_leave_balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave_request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        }
+      ],
+      "defaultApprovalRequired": false,
+      "createdAt": "2026-05-03T07:34:02.703Z",
+      "updatedAt": "2026-05-03T07:34:02.703Z"
+    },
+    {
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "rules": [
+        {
+          "condition": "tool.name === 'get_employees_leave_balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave_request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_leave_balance'",
+          "riskLevel": "LOW",
+          "approvalRequired": false,
+          "reason": "Safe read-only operation"
+        },
+        {
+          "condition": "tool.name === 'create_employees_leave_request'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        },
+        {
+          "condition": "tool.name === 'get_employees_payroll'",
+          "riskLevel": "MEDIUM",
+          "approvalRequired": false,
+          "reason": "Read operation accessing sensitive data"
+        },
+        {
+          "condition": "tool.name === 'create_hr_tickets'",
+          "riskLevel": "HIGH",
+          "approvalRequired": true,
+          "reason": "Modifies or creates data"
+        }
+      ],
+      "defaultApprovalRequired": false,
+      "createdAt": "2026-05-03T07:39:06.570Z",
+      "updatedAt": "2026-05-03T07:39:06.570Z"
+    }
+  ]
+}

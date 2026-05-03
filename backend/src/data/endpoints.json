@@ -1,0 +1,449 @@
+{
+  "endpoints": [
+    {
+      "id": "e091b225-0f0a-4045-818b-f474753c5e76",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "method": "GET",
+      "path": "/employees/{id}/leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "23abe55d-fc0c-4fc6-b2a3-4df7a427bb4e",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "method": "POST",
+      "path": "/employees/{id}/leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "7a9e4649-ab56-4bba-9e0b-c0a31081d47b",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "method": "GET",
+      "path": "/employees/{id}/payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "operationType": "read",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "1d1c4717-fdb1-477e-9c41-0ad6fab80c68",
+      "projectId": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "method": "POST",
+      "path": "/hr/tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "employee_id",
+          "in": "body",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "38fbc809-fe81-429e-8edb-86d20d8cf481",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "method": "GET",
+      "path": "/employees/{id}/leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "39470627-9bea-4abc-af46-cc65e0f3bdf4",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "method": "POST",
+      "path": "/employees/{id}/leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "3588c668-f932-420f-b6fc-52ca535f310e",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "method": "GET",
+      "path": "/employees/{id}/payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "operationType": "read",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "888c1727-cf3d-4608-acb1-8a04ec0b3457",
+      "projectId": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "method": "POST",
+      "path": "/hr/tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "employee_id",
+          "in": "body",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "61c8127c-57e8-4fa0-9d88-6ae5136e1a2b",
+      "projectId": "6ebe8b52-5b89-49a6-95c1-fd96bc829937",
+      "method": "GET",
+      "path": "/employees/{id}/leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "a0c5d9d7-1704-4836-9282-b6ff92c1e9a5",
+      "projectId": "6ebe8b52-5b89-49a6-95c1-fd96bc829937",
+      "method": "POST",
+      "path": "/employees/{id}/leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "60102c5e-965f-4d72-8706-c5bd413890f8",
+      "projectId": "6ebe8b52-5b89-49a6-95c1-fd96bc829937",
+      "method": "GET",
+      "path": "/employees/{id}/payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "operationType": "read",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "cb3b50f7-e477-47f7-b143-00262e64846c",
+      "projectId": "6ebe8b52-5b89-49a6-95c1-fd96bc829937",
+      "method": "POST",
+      "path": "/hr/tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "employee_id",
+          "in": "body",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "39c18a30-db73-4534-bad4-3a8458653173",
+      "projectId": "ab57ae62-bf84-4b8f-886f-9bf8af77817a",
+      "method": "GET",
+      "path": "/employees/{id}/leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "263442fe-425e-40ed-b13c-9873156938ee",
+      "projectId": "ab57ae62-bf84-4b8f-886f-9bf8af77817a",
+      "method": "POST",
+      "path": "/employees/{id}/leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "4183beba-7871-46ae-a005-2930b3becb60",
+      "projectId": "ab57ae62-bf84-4b8f-886f-9bf8af77817a",
+      "method": "GET",
+      "path": "/employees/{id}/payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "operationType": "read",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "c90cb2f6-a0b9-45e3-a669-c61613e2c078",
+      "projectId": "ab57ae62-bf84-4b8f-886f-9bf8af77817a",
+      "method": "POST",
+      "path": "/hr/tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "employee_id",
+          "in": "body",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "7fae2a0f-5580-4b54-b2f8-e8332323a5cf",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "method": "GET",
+      "path": "/employees/{id}/leave-balance",
+      "description": "Returns the current leave balance for an employee - id (path, required): Employee ID (e.g., E101, E102) Response: { employee_id, total_leaves, used_leaves, remaining_leaves }",
+      "operationType": "read",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "9eeb22ff-2962-4fff-8eb7-f2f95d2c0bc0",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "method": "POST",
+      "path": "/employees/{id}/leave-request",
+      "description": "Submit a new leave request - id (path, required): Employee ID - start_date (body, required): Leave start date (YYYY-MM-DD) - end_date (body, required): Leave end date (YYYY-MM-DD) - reason (body, optional): Reason for leave Response: { request_id, status, message }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "7a929484-a256-4360-b0e2-63cfd17ad946",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "method": "GET",
+      "path": "/employees/{id}/payroll",
+      "description": "Get payroll information for an employee - id (path, required): Employee ID Response: { employee_id, salary, bonus, deductions, net_pay }",
+      "operationType": "read",
+      "sensitive": true,
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "Path parameter: id"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    },
+    {
+      "id": "fdafd984-8f9f-47fd-ade8-4f8f27006bcf",
+      "projectId": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "method": "POST",
+      "path": "/hr/tickets",
+      "description": "Create a new HR support ticket - employee_id (body, required): Employee ID - category (body, required): Ticket category - description (body, required): Issue description Response: { ticket_id, status, created_at }",
+      "operationType": "write",
+      "sensitive": false,
+      "parameters": [
+        {
+          "name": "employee_id",
+          "in": "body",
+          "required": true,
+          "type": "Employee"
+        }
+      ]
+    }
+  ]
+}

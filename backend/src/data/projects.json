@@ -1,0 +1,49 @@
+{
+  "projects": [
+    {
+      "id": "35f6976a-df7e-4bfa-9087-3541fe19ecc3",
+      "name": "HR System API",
+      "description": "Employee leave management and payroll system",
+      "apiDocumentation": "API Documentation - HR System\n\nGET /employees/{id}/leave-balance\nReturns the current leave balance for an employee\nParameters:\n  - id (path, required): Employee ID (e.g., E101, E102)\nResponse: { employee_id, total_leaves, used_leaves, remaining_leaves }\n\nPOST /employees/{id}/leave-request\nSubmit a new leave request\nParameters:\n  - id (path, required): Employee ID\n  - start_date (body, required): Leave start date (YYYY-MM-DD)\n  - end_date (body, required): Leave end date (YYYY-MM-DD)\n  - reason (body, optional): Reason for leave\nResponse: { request_id, status, message }\n\nGET /employees/{id}/payroll\nGet payroll information for an employee\nParameters:\n  - id (path, required): Employee ID\nResponse: { employee_id, salary, bonus, deductions, net_pay }\n\nPOST /hr/tickets\nCreate a new HR support ticket\nParameters:\n  - employee_id (body, required): Employee ID\n  - category (body, required): Ticket category\n  - description (body, required): Issue description\nResponse: { ticket_id, status, created_at }",
+      "createdAt": "2026-05-03T07:05:21.200Z",
+      "updatedAt": "2026-05-03T07:20:45.917Z",
+      "status": "generated"
+    },
+    {
+      "id": "2d88ac6d-8a24-4f0f-94c5-a25549dce7dc",
+      "name": "HR System API",
+      "description": "Employee leave management and payroll system",
+      "apiDocumentation": "API Documentation - HR System\n\nGET /employees/{id}/leave-balance\nReturns the current leave balance for an employee\nParameters:\n  - id (path, required): Employee ID (e.g., E101, E102)\nResponse: { employee_id, total_leaves, used_leaves, remaining_leaves }\n\nPOST /employees/{id}/leave-request\nSubmit a new leave request\nParameters:\n  - id (path, required): Employee ID\n  - start_date (body, required): Leave start date (YYYY-MM-DD)\n  - end_date (body, required): Leave end date (YYYY-MM-DD)\n  - reason (body, optional): Reason for leave\nResponse: { request_id, status, message }\n\nGET /employees/{id}/payroll\nGet payroll information for an employee\nParameters:\n  - id (path, required): Employee ID\nResponse: { employee_id, salary, bonus, deductions, net_pay }\n\nPOST /hr/tickets\nCreate a new HR support ticket\nParameters:\n  - employee_id (body, required): Employee ID\n  - category (body, required): Ticket category\n  - description (body, required): Issue description\nResponse: { ticket_id, status, created_at }",
+      "createdAt": "2026-05-03T07:10:02.944Z",
+      "updatedAt": "2026-05-03T07:19:17.065Z",
+      "status": "generated"
+    },
+    {
+      "id": "6ebe8b52-5b89-49a6-95c1-fd96bc829937",
+      "name": "HR System API",
+      "description": "Employee leave management and payroll system",
+      "apiDocumentation": "API Documentation - HR System\n\nGET /employees/{id}/leave-balance\nReturns the current leave balance for an employee\nParameters:\n  - id (path, required): Employee ID (e.g., E101, E102)\nResponse: { employee_id, total_leaves, used_leaves, remaining_leaves }\n\nPOST /employees/{id}/leave-request\nSubmit a new leave request\nParameters:\n  - id (path, required): Employee ID\n  - start_date (body, required): Leave start date (YYYY-MM-DD)\n  - end_date (body, required): Leave end date (YYYY-MM-DD)\n  - reason (body, optional): Reason for leave\nResponse: { request_id, status, message }\n\nGET /employees/{id}/payroll\nGet payroll information for an employee\nParameters:\n  - id (path, required): Employee ID\nResponse: { employee_id, salary, bonus, deductions, net_pay }\n\nPOST /hr/tickets\nCreate a new HR support ticket\nParameters:\n  - employee_id (body, required): Employee ID\n  - category (body, required): Ticket category\n  - description (body, required): Issue description\nResponse: { ticket_id, status, created_at }",
+      "createdAt": "2026-05-03T07:21:13.190Z",
+      "updatedAt": "2026-05-03T07:22:28.525Z",
+      "status": "generated"
+    },
+    {
+      "id": "ab57ae62-bf84-4b8f-886f-9bf8af77817a",
+      "name": "HR System API",
+      "description": "Employee leave management and payroll system",
+      "apiDocumentation": "API Documentation - HR System\n\nGET /employees/{id}/leave-balance\nReturns the current leave balance for an employee\nParameters:\n  - id (path, required): Employee ID (e.g., E101, E102)\nResponse: { employee_id, total_leaves, used_leaves, remaining_leaves }\n\nPOST /employees/{id}/leave-request\nSubmit a new leave request\nParameters:\n  - id (path, required): Employee ID\n  - start_date (body, required): Leave start date (YYYY-MM-DD)\n  - end_date (body, required): Leave end date (YYYY-MM-DD)\n  - reason (body, optional): Reason for leave\nResponse: { request_id, status, message }\n\nGET /employees/{id}/payroll\nGet payroll information for an employee\nParameters:\n  - id (path, required): Employee ID\nResponse: { employee_id, salary, bonus, deductions, net_pay }\n\nPOST /hr/tickets\nCreate a new HR support ticket\nParameters:\n  - employee_id (body, required): Employee ID\n  - category (body, required): Ticket category\n  - description (body, required): Issue description\nResponse: { ticket_id, status, created_at }",
+      "createdAt": "2026-05-03T07:33:56.780Z",
+      "updatedAt": "2026-05-03T07:34:04.669Z",
+      "status": "generated"
+    },
+    {
+      "id": "904299a3-c6f3-4f85-bdb9-dc50d780d021",
+      "name": "HR System API",
+      "description": "Employee leave management and payroll system",
+      "apiDocumentation": "API Documentation - HR System\n\nGET /employees/{id}/leave-balance\nReturns the current leave balance for an employee\nParameters:\n  - id (path, required): Employee ID (e.g., E101, E102)\nResponse: { employee_id, total_leaves, used_leaves, remaining_leaves }\n\nPOST /employees/{id}/leave-request\nSubmit a new leave request\nParameters:\n  - id (path, required): Employee ID\n  - start_date (body, required): Leave start date (YYYY-MM-DD)\n  - end_date (body, required): Leave end date (YYYY-MM-DD)\n  - reason (body, optional): Reason for leave\nResponse: { request_id, status, message }\n\nGET /employees/{id}/payroll\nGet payroll information for an employee\nParameters:\n  - id (path, required): Employee ID\nResponse: { employee_id, salary, bonus, deductions, net_pay }\n\nPOST /hr/tickets\nCreate a new HR support ticket\nParameters:\n  - employee_id (body, required): Employee ID\n  - category (body, required): Ticket category\n  - description (body, required): Issue description\nResponse: { ticket_id, status, created_at }",
+      "createdAt": "2026-05-03T07:36:31.436Z",
+      "updatedAt": "2026-05-03T07:39:08.007Z",
+      "status": "generated"
+    }
+  ]
+}
