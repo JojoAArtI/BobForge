@@ -170,7 +170,7 @@ cd backend
 cp .env.example .env
 
 # Edit backend/.env with your watsonx.ai credentials:
-WATSONX_API_KEY=your_api_key_here
+WATSONX_API_KEY=<your_watsonx_api_key>
 WATSONX_URL=https://us-south.ml.cloud.ibm.com
 WATSONX_PROJECT_ID=your_project_id_here
 WATSONX_MODEL_ID=ibm/granite-13b-chat-v2
